@@ -12,7 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/zen-kurenaido": "^5.2.8",
     "astro": "^6.3.5",
+    "chart.js": "^4.5.1",
     "ress": "^5.0.2"
   },
   "devDependencies": {
