@@ -1,0 +1,38 @@
+---
+// import { check } from "astro:schema";
+import Chart from "chart.js/auto";
+// console.log(Chart);
+---
+
+<style>
+    canvas {
+        margin-top: 60px;
+    }
+</style>
+
+<canvas id="myChart" width="200" height="200"></canvas>
+
+<script>
+    import Chart from "chart.js/auto";
+    const ctx = document.getElementById("myChart");
+    console.log("canvas", ctx);
+
+    new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: ["ソファ", "テーブル", "チェア", "タイル"],
+            datasets: [
+                {
+                    data: [45, 30, 15, 10],
+                    backgroundColor: [
+                        "#ff6b6b",
+                        "#4ecdc4",
+                        "#ffe66d",
+                        "d9d9d9",
+                    ],
+                    borderWidth: 0,
+                },
+            ],
+        },
+    });
+</script>
