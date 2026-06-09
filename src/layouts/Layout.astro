@@ -1,16 +1,24 @@
 ---
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import Hamburger from "../components/hamburger.astro";
+import "@fontsource/zen-kurenaido";
 import "ress";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="jp">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Kaisei+Opti&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:wght@100&family=Noto+Sans+JP:wght@300&family=Noto+Serif+JP:wght@200&family=Rampart+One&family=Rubik+80s+Fade&family=Sawarabi+Mincho&family=Zen+Kurenaido&display=swap"
+			rel="stylesheet"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>チームプロジェクト</title>
 	</head>
@@ -22,8 +30,11 @@ import "ress";
 </html>
 
 <style>
-	html,
+	html {
+		font-size: 62.5%;
+	}
 	body {
+		font-family: "Zen Kurenaido", cursive;
 		margin: 0;
 		width: 100%;
 		height: 100%;
