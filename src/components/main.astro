@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import brickBackground from "../assets/brick_background.png";
+import mainImg from "../assets/leftImg.png";
+---
+<style lang="scss">
+  .main{
+    width: 393px;
+    height: 1000px;
+    margin-inline: auto;
+    background-image: url("../assets/brick_background.png");
+    background-repeat: repeat-y;
+    // overflow-x: hidden;
+    // border: solid 1px black;
+    .mainImg{
+      padding-top: 96px;
+      display: flex;
+      // justify-content: center;
+      width: 270%;
+      gap: 29px;
+      transform: translateX(-25.5%);
+      picture{
+        display: flex;
+        justify-content: center;
+        // border: solid 1px tomato;
+      }
+    }
+  }
+</style>
+
+<main>
+  <div class="main">
+    <div class="mainImg">
+      <picture>
+        <Image src={mainImg} alt="" />
+      </picture>
+      <picture>
+        <Image src={mainImg} alt="" />
+      </picture>
+      <picture>
+        <Image src={mainImg} alt="" />
+      </picture>
+    </div>
+  </div>
+</main>
