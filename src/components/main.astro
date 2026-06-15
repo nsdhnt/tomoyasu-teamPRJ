@@ -2,10 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import brickBackground from "../assets/brick_background.png";
-import mainImg from "../assets/leftImg.png";
+import mainImg from "../assets/mainImg.png";
 import mainImg1 from "../assets/mainImg1.png";
 import explore from "../assets/explore.png";
 import Nav from "../components/nav.astro";
+import leftWindow from "../assets/leftWindow.png";
+import rightWindow from "../assets/rightWindow.png";
 ---
 <style lang="scss">
   .main{
@@ -17,20 +19,66 @@ import Nav from "../components/nav.astro";
     .mainImgWrap{
       padding: 96px calc(50% - 141px);
       overflow-x: hidden;
+      overflow: scroll;
       display: flex;
       .mainImg{
         display: flex;
         transform: translateX(-100%);
         li{
           display: flex;
+          gap: 0;
           justify-content: center;
-          animation: slider 12s infinite;
+          // animation: slider 12s infinite;
           padding-left: 4px;
           padding-right: 25px;
           list-style: none;
           picture{
+            position: relative;
+            display: block;
             img{
               width: 282px;
+              display: block;
+            }
+            .windowWrap{
+              position: absolute;
+              top: 20px;
+              left: 10px;
+              right: 11px;
+              bottom: 20px;
+              z-index: 200;
+              // border: solid 1px tomato;
+
+              display: flex;
+              justify-content: center;
+              &:hover {
+              img:first-child {
+                transform: rotateY(-120deg); 
+              }
+              img:last-child {
+                transform: rotateY(120deg); 
+              }
+            }
+              img {
+                width: 127px;
+                height: 428px;
+                object-fit: cover;
+                &:first-child{
+                  // transform: rotateY(170deg);
+                  transform-origin: left;
+                  transition: 2s;
+                }
+                &:last-child{
+                  // transform: rotateY(170deg);
+                  transform-origin: right;
+                  transition: 2s;
+                }
+                // &:hover:first-child{
+                //   transform: rotateY(180deg);
+                // }
+                // &:hover:last-child{
+                //   transform: rotateY(180deg);
+                // }
+              }
             }
           }
         }
@@ -142,6 +190,10 @@ import Nav from "../components/nav.astro";
         <li>
           <picture>
             <Image src={mainImg} alt="" />
+            <div class="windowWrap">
+              <Image src={leftWindow} alt="" />
+              <Image src={rightWindow} alt="" />
+            </div>
           </picture>
         </li>
         <li>
