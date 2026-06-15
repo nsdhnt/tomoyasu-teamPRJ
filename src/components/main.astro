@@ -4,12 +4,13 @@ import { Image } from "astro:assets";
 import brickBackground from "../assets/brick_background.png";
 import mainImg from "../assets/leftImg.png";
 import mainImg1 from "../assets/mainImg1.png";
-import explore from "../assets/explore.png"
+import explore from "../assets/explore.png";
+import Nav from "../components/nav.astro";
 ---
 <style lang="scss">
   .main{
     width: 393px;
-    height: 1000px;
+    // height: 1000px;
     margin-inline: auto;
     background-image: url("../assets/brick_background.png");
     background-repeat: repeat-y;
@@ -203,4 +204,5 @@ import explore from "../assets/explore.png"
       <Image src={explore} alt="">
     </div>
   </div>
+  <Nav />
 </main>
