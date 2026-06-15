@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import brickBackground from "../assets/brick_background.png";
 import mainImg from "../assets/leftImg.png";
+import mainImg1 from "../assets/mainImg1.png";
+import explore from "../assets/explore.png"
 ---
 <style lang="scss">
   .main{
@@ -11,36 +13,194 @@ import mainImg from "../assets/leftImg.png";
     margin-inline: auto;
     background-image: url("../assets/brick_background.png");
     background-repeat: repeat-y;
-    // overflow-x: hidden;
-    // border: solid 1px black;
-    .mainImg{
-      padding-top: 96px;
+    .mainImgWrap{
+      padding: 96px calc(50% - 141px);
+      overflow-x: hidden;
       display: flex;
-      // justify-content: center;
-      width: 270%;
-      gap: 29px;
-      transform: translateX(-25.5%);
-      picture{
+      .mainImg{
         display: flex;
-        justify-content: center;
-        // border: solid 1px tomato;
+        transform: translateX(-100%);
+        li{
+          display: flex;
+          justify-content: center;
+          animation: slider 12s infinite;
+          padding-left: 4px;
+          padding-right: 25px;
+          list-style: none;
+          picture{
+            img{
+              width: 282px;
+            }
+          }
+        }
       }
+    }
+    .explore{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p{
+        &:first-child{
+          font-size: 48px;
+        }
+        &:nth-child(2){
+          font-size: 24px;
+        }
+      }
+      img{
+        margin: 10px 0;
+        width: 22px;
+      }
+    }
+  }
+
+  @keyframes slider {
+    0%{
+      transform: translateX(0);
+    }
+    8%{
+      transform: translateX(0);
+    }
+    16%{
+      transform: translateX(-100%);
+    }
+    24%{
+      transform: translateX(-100%);
+    }
+    33%{
+      transform: translateX(-200%);
+    }
+    41%{
+      transform: translateX(-200%);
+    }
+    50%{
+      transform: translateX(-300%);
+    }
+    58%{
+      transform: translateX(-300%);
+    }
+    66%{
+      transform: translateX(-400%);
+    }
+    75%{
+      transform: translateX(-400%);
+    }
+    83%{
+      transform: translateX(-500%);
+    }
+    91%{
+      transform: translateX(-500%);
+    }
+    100%{
+      transform: translateX(-600%);
     }
   }
 </style>
 
 <main>
   <div class="main">
-    <div class="mainImg">
-      <picture>
-        <Image src={mainImg} alt="" />
-      </picture>
-      <picture>
-        <Image src={mainImg} alt="" />
-      </picture>
-      <picture>
-        <Image src={mainImg} alt="" />
-      </picture>
+    <div class="mainImgWrap">
+      <ul class="mainImg">
+        <li>
+          <picture>
+            <Image src={mainImg1} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+      </ul>
+      <ul class="mainImg">
+        <li>
+          <picture>
+            <Image src={mainImg1} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+      </ul>
+      <ul class="mainImg">
+        <li>
+          <picture>
+            <Image src={mainImg1} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <Image src={mainImg} alt="" />
+          </picture>
+        </li>
+      </ul>
+    </div>
+    <div class="explore">
+      <p>colors Taiwan</p>
+      <p>explore</p>
+      <Image src={explore} alt="">
     </div>
   </div>
 </main>
