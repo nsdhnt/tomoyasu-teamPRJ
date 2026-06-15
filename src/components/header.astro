@@ -1,8 +1,38 @@
 ---
 import Hamburger from "../components/hamburger.astro";
-import Logo from "../assetslogo.png/";
+import { Image } from "astro:assets";
+import Logo from "../assets/logo.png";
+import ShopBtn from "../assets/shopBtn.png";
 ---
 
-<header>
-    <Hamburger />
+<style lang="scss">
+    .header {
+        position: fixed;
+        width: 100%;
+        background-color: #fff;
+        z-index: 100;
+        .header-inner {
+            display: flex;
+            padding: 0 16px;
+            align-items: center;
+            justify-content: space-between;
+            .shop-btn {
+                position: relative;
+                z-index: 110;
+            }
+        }
+    }
+</style>
+
+<header class="header">
+    <div class="header-inner">
+        <Image
+            src={ShopBtn}
+            alt="買い物カゴボタン"
+            width={31}
+            class="shop-btn"
+        />
+        <Image src={Logo} alt="ロゴ" width={60} />
+        <Hamburger />
+    </div>
 </header>
