@@ -6,25 +6,27 @@ import mainImg from "../assets/mainImg.png";
 import mainImg1 from "../assets/mainImg1.png";
 import explore from "../assets/explore.png";
 import Nav from "../components/nav.astro";
+import Images from "../components/images.astro";
 import leftWindow from "../assets/leftWindow.png";
 import rightWindow from "../assets/rightWindow.png";
 ---
+
 <style lang="scss">
-  .main{
+  .main {
     width: 393px;
     // height: 1000px;
     margin-inline: auto;
     background-image: url("../assets/brick_background.png");
     background-repeat: repeat-y;
-    .mainImgWrap{
+    .mainImgWrap {
       padding: 96px calc(50% - 141px);
       overflow-x: hidden;
       overflow: scroll;
       display: flex;
-      .mainImg{
+      .mainImg {
         display: flex;
         transform: translateX(-100%);
-        li{
+        li {
           display: flex;
           gap: 0;
           justify-content: center;
@@ -84,19 +86,19 @@ import rightWindow from "../assets/rightWindow.png";
         }
       }
     }
-    .explore{
+    .explore {
       display: flex;
       flex-direction: column;
       align-items: center;
-      p{
-        &:first-child{
+      p {
+        &:first-child {
           font-size: 48px;
         }
-        &:nth-child(2){
+        &:nth-child(2) {
           font-size: 24px;
         }
       }
-      img{
+      img {
         margin: 10px 0;
         width: 22px;
       }
@@ -104,43 +106,43 @@ import rightWindow from "../assets/rightWindow.png";
   }
 
   @keyframes slider {
-    0%{
+    0% {
       transform: translateX(0);
     }
-    8%{
+    8% {
       transform: translateX(0);
     }
-    16%{
+    16% {
       transform: translateX(-100%);
     }
-    24%{
+    24% {
       transform: translateX(-100%);
     }
-    33%{
+    33% {
       transform: translateX(-200%);
     }
-    41%{
+    41% {
       transform: translateX(-200%);
     }
-    50%{
+    50% {
       transform: translateX(-300%);
     }
-    58%{
+    58% {
       transform: translateX(-300%);
     }
-    66%{
+    66% {
       transform: translateX(-400%);
     }
-    75%{
+    75% {
       transform: translateX(-400%);
     }
-    83%{
+    83% {
       transform: translateX(-500%);
     }
-    91%{
+    91% {
       transform: translateX(-500%);
     }
-    100%{
+    100% {
       transform: translateX(-600%);
     }
   }
@@ -253,8 +255,9 @@ import rightWindow from "../assets/rightWindow.png";
     <div class="explore">
       <p>colors Taiwan</p>
       <p>explore</p>
-      <Image src={explore} alt="">
+      <Image src={explore} alt="" />
     </div>
+    <Nav />
+    <Images />
   </div>
-  <Nav />
 </main>
