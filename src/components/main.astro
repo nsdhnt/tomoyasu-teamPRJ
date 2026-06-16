@@ -9,6 +9,7 @@ import Nav from "../components/nav.astro";
 import Images from "../components/images.astro";
 import leftWindow from "../assets/leftWindow.png";
 import rightWindow from "../assets/rightWindow.png";
+import Graph from "./graph.astro";
 ---
 
 <style lang="scss">
@@ -34,14 +35,14 @@ import rightWindow from "../assets/rightWindow.png";
           padding-left: 4px;
           padding-right: 25px;
           list-style: none;
-          picture{
+          picture {
             position: relative;
             display: block;
-            img{
+            img {
               width: 282px;
               display: block;
             }
-            .windowWrap{
+            .windowWrap {
               position: absolute;
               top: 20px;
               left: 10px;
@@ -53,23 +54,23 @@ import rightWindow from "../assets/rightWindow.png";
               display: flex;
               justify-content: center;
               &:hover {
-              img:first-child {
-                transform: rotateY(-120deg); 
+                img:first-child {
+                  transform: rotateY(-120deg);
+                }
+                img:last-child {
+                  transform: rotateY(120deg);
+                }
               }
-              img:last-child {
-                transform: rotateY(120deg); 
-              }
-            }
               img {
                 width: 127px;
                 height: 428px;
                 object-fit: cover;
-                &:first-child{
+                &:first-child {
                   // transform: rotateY(170deg);
                   transform-origin: left;
                   transition: 2s;
                 }
-                &:last-child{
+                &:last-child {
                   // transform: rotateY(170deg);
                   transform-origin: right;
                   transition: 2s;
@@ -259,5 +260,6 @@ import rightWindow from "../assets/rightWindow.png";
     </div>
     <Nav />
     <Images />
+    <Graph />
   </div>
 </main>
