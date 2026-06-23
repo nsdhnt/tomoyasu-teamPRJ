@@ -2,6 +2,32 @@
 import Layout from "../layouts/Layout.astro";
 import Main from "../components/main.astro";
 ---
+
+<script>
+  // import Lenis from "lenis";
+
+  // const lenis = new Lenis();
+
+  // function raf(time) {
+  //   lenis.raf(time);
+  //   requestAnimationFrame(raf);
+  // }
+
+  // requestAnimationFrame(raf);
+  import Lenis from "lenis";
+
+  const lenis = new Lenis({
+    duration: 1.5,
+    smoothWheel: true,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
 <Layout>
   <Main />
 </Layout>
