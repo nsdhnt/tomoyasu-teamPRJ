@@ -1,15 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import brickBackground from "../assets/brick_background.png";
 import mainImg from "../assets/mainImg.png";
 import mainImg1 from "../assets/mainImg1.png";
 import explore from "../assets/explore.png";
-import Nav from "../components/nav.astro";
-import Images from "../components/images.astro";
 import leftWindow from "../assets/leftWindow.png";
 import rightWindow from "../assets/rightWindow.png";
-import Graph from "./graph.astro";
 ---
 
 <style lang="scss">
@@ -258,8 +254,5 @@ import Graph from "./graph.astro";
       <p>explore</p>
       <Image src={explore} alt="" />
     </div>
-    <Nav />
-    <Images />
-    <Graph />
   </div>
 </main>

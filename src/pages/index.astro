@@ -2,8 +2,39 @@
 import Layout from "../layouts/Layout.astro";
 import Main from "../components/main.astro";
 import ItemList from "../components/itemList.astro";
+import Nav from "../components/nav.astro";
+import Images from "../components/images.astro";
+import Graph from "../components/graph.astro";
 ---
+
+<script>
+  // import Lenis from "lenis";
+
+  // const lenis = new Lenis();
+
+  // function raf(time) {
+  //   lenis.raf(time);
+  //   requestAnimationFrame(raf);
+  // }
+
+  // requestAnimationFrame(raf);
+  import Lenis from "lenis";
+
+  const lenis = new Lenis({
+    duration: 1.3,
+    smoothWheel: true,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
 <Layout>
   <Main />
+  <Nav />
+  <Images />
   <ItemList />
 </Layout>
