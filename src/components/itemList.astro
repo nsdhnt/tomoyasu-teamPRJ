@@ -1,0 +1,165 @@
+---
+import { Image } from "astro:assets";
+import ItemThumb from "../assets/item_thumb.png";
+import ItemIcon from "../assets/item_icon.png";
+import mainItemView from "../assets/main_item_view.png";
+import tile2 from "../assets/tile2.png";
+import tile3 from "../assets/tile3.png";
+import tile4 from "../assets/tile4.png";
+import tile5 from "../assets/tile5.png";
+
+---
+
+<script>
+  const moreBtn = document.querySelector(".moreBtn");
+  const moreImgs = document.querySelector(".moreImgs");
+  moreBtn?.addEventListener("click", ()=>{
+    moreImgs?.classList.toggle("hidden");
+  });
+</script>
+
+
+<style lang="scss">
+  .itemList{
+    width: 393px;
+    margin: 0 auto;
+    .itemContainer{
+      background: url("../assets/brick_background.png");
+      .mainThumb{
+        position: relative;
+        picture{
+          &:first-child{
+            img{
+              width: 100%;
+            }
+          }
+          &:last-child{
+            img{
+              position: absolute;
+              top: 290px;
+              left: 30px;
+              width: 156px;
+              height: 156px;
+            }
+          }
+        }
+      }
+      h2{
+        font-size: 36px;
+        text-align: center;
+        padding-top: 70px;
+        padding-bottom: 45px;
+      }
+      .itemImgs{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 24px;
+        .itemImg{
+          picture{
+            img{
+              box-shadow: 9px 9px 15px rgb(0, 0, 0, 0.25);
+              border-radius: 17px;
+            }
+          }
+        }
+        p{
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+      .moreImgs{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 24px;
+        &.hidden{
+          display: none;
+        }
+        .itemImg{
+          picture{
+            img{
+              box-shadow: 9px 9px 15px rgb(0, 0, 0, 0.25);
+              border-radius: 17px;
+            }
+          }
+        }
+        p{
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+
+      .moreBtn{
+        text-align: center;
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        cursor: pointer;
+        &:hover{
+          text-decoration: underline;
+          text-underline-offset: 5px;
+          text-decoration-thickness: 1px;
+        }
+      }
+    }
+  }
+
+  // .hidden{
+  //   display: none;
+  // }
+</style>
+
+<div class="itemList">
+  <div class="itemContainer">
+    <div class="mainThumb">
+      <picture><Image src={ItemThumb} alt="" /></picture>
+      <picture><Image src={ItemIcon} alt="" /></picture>
+    </div>
+    <h2>タイル<br>全○種類</h2>
+    <div class="itemImgs">
+      <div class="itemImg">
+        <picture><Image src={mainItemView} alt="" /></picture>
+        <p>ガレット</p>
+      </div>
+      <div class="itemImg">
+        <picture><Image src={tile2} alt="" /></picture>
+        <p>トルテ</p>
+      </div>
+      <div class="itemImg">
+        <picture><Image src={tile3} alt="" /></picture>
+        <p>ピュレ</p>
+      </div>
+      <div class="itemImg">
+        <picture><Image src={tile4} alt="" /></picture>
+        <p>マカロン</p>
+      </div>
+      <div class="itemImg">
+        <picture><Image src={tile5} alt="" /></picture>
+        <p>マジョリカ</p>
+      </div>
+    </div>
+
+    
+    <div class="moreImgs hidden">
+      <div class="itemImg">
+        <picture><Image src={tile2} alt="" /></picture>
+        <p>トルテ</p>
+      </div>
+      <div class="itemImg">
+        <picture><Image src={tile2} alt="" /></picture>
+        <p>トルテ</p>
+      </div>
+      <div class="itemImg">
+        <picture><Image src={tile2} alt="" /></picture>
+        <p>トルテ</p>
+      </div>
+      <div class="itemImg">
+        <picture><Image src={tile2} alt="" /></picture>
+        <p>トルテ</p>
+      </div>
+    </div>
+    
+    <p class="moreBtn">view more</p>
+  </div>
+</div>
