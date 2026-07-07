@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
+
 <style lang="scss">
   nav{
     width: 393px;
@@ -19,17 +20,38 @@ import Layout from "../layouts/Layout.astro";
         width: calc(100vw / 3);
         display: flex;
         justify-content: center;
-        // border: solid 1px tomato;
+        cursor: pointer;
+        transition: 0.5s;
+        &:hover{
+          text-decoration: underline;
+        }
+        &.active{
+          text-decoration: underline;
+        }
       }
     }
   }
-
-</style>
+  </style>
 
 <nav>
   <ul>
-    <li>collection</li>
-    <li>journal</li>
-    <li>studio</li>
+    <li class="tab-btn active" data-tab="tile">tile</li>
+    <li class="tab-btn" data-tab="ARAS">ARAS</li>
+    <li class="tab-btn" data-tab="MOKU">MOKU</li>
   </ul>
 </nav>
+
+<script is:inline>
+  const tabBtns = document.querySelectorAll(".tab-btn");
+  tabBtns.forEach((tabBtn)=>{
+    // tabBtn.classList.remove("active");
+    // tabBtns[0].classList.add("active");
+    tabBtn.addEventListener("click", ()=>{
+      tabBtns.forEach(btn => btn.classList.remove("active"));
+      tabBtn.classList.add("active");
+      const tabName = tabBtn.getAttribute("data-tab");
+      const event = new CustomEvent('toggle-items', { detail: { tabName } });
+      window.dispatchEvent(event);
+    });
+  });
+</script>

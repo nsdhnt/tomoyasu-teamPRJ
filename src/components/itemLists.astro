@@ -1,0 +1,87 @@
+---
+import ItemList from "./itemList.astro";
+import { Image } from "astro:assets";
+import ItemThumb from "../assets/item_thumb.png";
+import tileIcon from "../assets/item_icon.png";
+import mainTileView from "../assets/main_item_view.png";
+import tile2 from "../assets/tile2.png";
+import tile3 from "../assets/tile3.png";
+import tile4 from "../assets/tile4.png";
+import tile5 from "../assets/tile5.png";
+
+---
+
+
+<style lang="scss">
+  .itemLists{
+    width: 393px;
+    margin: 0 auto;
+    div{
+      display: none;
+      &.active{
+        display: block;
+      }
+    }
+  }
+</style>
+
+<div class="itemLists">
+  <div class="tile active">
+    <ItemList
+      tabBlockName="タイル"
+      mainItemView={mainTileView}
+      itemIcon={tileIcon}
+      itemImg2={tile2}
+      itemImg3={tile3}
+      itemImg4={tile4}
+      itemImg5={tile5}
+    />
+  </div>
+  <div class="ARAS">
+    <ItemList
+      tabBlockName="ARAS"
+      mainItemView={mainTileView}
+      itemIcon={tileIcon}
+      itemImg2={tile3}
+      itemImg3={tile3}
+      itemImg4={tile3}
+      itemImg5={tile3}
+    />
+  </div>
+  <div class="MOKU">
+    <ItemList
+      tabBlockName="moku"
+      mainItemView={mainTileView}
+      itemIcon={tileIcon}
+      itemImg2={tile2}
+      itemImg3={tile3}
+      itemImg4={tile4}
+      itemImg5={tile5}
+    />
+  </div>
+</div>
+
+<script>
+  const moreBtn = document.querySelector(".moreBtn");
+  const moreImgs = document.querySelector(".moreImgs");
+  moreBtn?.addEventListener("click", ()=>{
+    moreImgs?.classList.toggle("hidden");
+  });
+
+  window.addEventListener("toggle-items", (e)=>{
+    // navで押したタブ名を取得
+    const tabNameClass = e.detail.tabName;
+    // console.log(tabNameClass);
+    const itemLists = document.querySelectorAll(".itemLists > div");
+    itemLists.forEach((itemList)=>{
+      // 各商品一覧のactiveを削除
+      itemList.classList.remove("active");
+      // 押されたタブ名と同じリストを表示
+      if(tabNameClass === itemList.className){
+        console.log(itemList);
+        itemList.classList.add("active");
+      }
+    });
+  });
+</script>
+
