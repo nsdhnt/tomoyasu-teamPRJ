@@ -11,6 +11,7 @@ import Food1 from "../assets/food1.png";
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow: hidden;
         .story-title {
             font-size: 3.6rem;
             color: #000;
@@ -18,7 +19,7 @@ import Food1 from "../assets/food1.png";
         }
         .story-content {
             display: flex;
-            /* overflow-y: hidden; */
+            /* overflow: hidden; */
             position: relative;
             padding-top: 110px;
             height: 510px;
@@ -29,28 +30,35 @@ import Food1 from "../assets/food1.png";
             display: flex;
             flex-direction: column;
             align-items: center;
+            .desertImg {
+                transition: 0.4s all ease-in-out;
+            }
             .desert1 {
+                transition: 0.3 all ease-in-out;
                 position: absolute;
                 top: -23%;
-                left: -10rem;
+                left: -60%;
                 width: 60%;
                 height: 60%;
+                transition: 0.3s;
             }
             .desert2 {
                 position: absolute;
-                top: 25%;
-                right: -15%;
+                top: 28%;
+                right: -37%;
                 width: 40%;
                 height: 35%;
                 transform: rotate(98deg);
+                transition: 0.4 all ease-in-out;
             }
 
             .food1 {
                 position: absolute;
-                left: -28%;
+                left: -52%;
                 bottom: -15%;
                 width: 60%;
                 height: 60%;
+                transition: 0.5s all ease-in-out;
             }
             .inner-title {
                 font-size: 2rem;
@@ -66,14 +74,29 @@ import Food1 from "../assets/food1.png";
                 line-height: 2.5rem;
             }
         }
+        .story-content {
+            .show-desert1 {
+                transform: translateX(150px);
+            }
+            .show-desert2 {
+                transform: translateX(-90px) rotate(98deg);
+            }
+            .show-food1 {
+                transform: translateX(90px);
+            }
+        }
     }
 </style>
 <div class="story-wrap">
     <h1 class="story-title">Story</h1>
     <div class="story-content">
-        <Image src={Desert1} alt="白皿にワッフル" class="desert1" />
-        <Image src={Desert2} alt="黒皿にいちごチョコケーキ" class="desert2" />
-        <Image src={Food1} alt="黒皿ご飯料理" class="food1" />
+        <Image src={Desert1} alt="白皿にワッフル" class="desertImg desert1" />
+        <Image
+            src={Desert2}
+            alt="黒皿にいちごチョコケーキ"
+            class="desertImg desert2"
+        />
+        <Image src={Food1} alt="黒皿ご飯料理" class="desertImg food1" />
         <h2 class="inner-title">世界中の人々の人生に彩りを</h2>
         <p class="story-info">
             家具を置いた先の暮らしを想像<br />
@@ -87,4 +110,23 @@ import Food1 from "../assets/food1.png";
         </p>
     </div>
 </div>
-<script></script>
+<script>
+    const desert1 = document.querySelector(".desert1");
+    const desert2 = document.querySelector(".desert2");
+    const food1 = document.querySelector(".food1");
+
+    function imagesScroll() {
+        if (window.scrollY >= 600) {
+            desert1?.classList.add("show-desert1");
+            desert2?.classList.add("show-desert2");
+            food1?.classList.add("show-food1");
+        } else {
+            desert1?.classList.remove("show-desert1");
+            desert2?.classList.remove("show-desert2");
+            food1?.classList.remove("show-food1");
+        }
+    }
+
+    window.addEventListener("scroll", imagesScroll);
+    imagesScroll();
+</script>
