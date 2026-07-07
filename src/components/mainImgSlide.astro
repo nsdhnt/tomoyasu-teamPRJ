@@ -11,14 +11,20 @@ const { src } = Astro.props;
     gap: 0;
     justify-content: center;
     // animation: slider 12s infinite;
-    padding-left: 4px;
-    padding-right: 25px;
+    // padding-left: 60px;
+    // padding-right: 60px;
+    padding: 0 56px;
     list-style: none;
+    // border: solid 1px tomato;
+    &:nth-child(2){
+      padding: 0;
+    }
     picture {
       position: relative;
       display: block;
       img {
         width: 282px;
+        height: 468px;
         display: block;
       }
       .windowWrap {
@@ -48,11 +54,13 @@ const { src } = Astro.props;
             // transform: rotateY(170deg);
             transform-origin: left;
             transition: 2s;
+            // transform: rotateY(-120deg);
           }
           &:last-child {
             // transform: rotateY(170deg);
             transform-origin: right;
             transition: 2s;
+            // transform: rotateY(120deg);
           }
         }
       }
