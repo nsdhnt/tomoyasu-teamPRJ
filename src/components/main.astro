@@ -2,7 +2,9 @@
 import MainImgSlide from "./mainImgSlide.astro";
 import { Image } from "astro:assets";
 import mainImg from "../assets/mainImg.png";
-import mainImg1 from "../assets/mainImg1.png";
+import mainImgDrinking from "../assets/mainImgDrinking.png";
+import mainImgEating from "../assets/mainImgEating.png";
+import mainImgPasting from "../assets/mainImgPasting.png";
 import explore from "../assets/explore.png";
 ---
 
@@ -11,19 +13,24 @@ import explore from "../assets/explore.png";
     width: 393px;
     // height: 1000px;
     margin-inline: auto;
-    background-image: url("../assets/brick_background.png");
+    // background-image: url("../assets/brick_background.png");
     background-repeat: repeat-y;
     .mainImgWrap {
-      padding: 96px calc(50% - 141px);
+      padding: 96px 0;
       overflow-x: hidden;
       overflow: scroll;
       display: flex;
+      // border: solid 1px tomato;
       &::-webkit-scrollbar{
         display: none;
       }
       .mainImg {
         display: flex;
+        // border: solid 1px tomato;
         // transform: translateX(-100%);
+        img{
+          border: solid 1px black;
+        }
       }
     }
     .explore {
@@ -52,22 +59,13 @@ import explore from "../assets/explore.png";
     <div class="mainImgWrap">
       <ul class="mainImg">
         <MainImgSlide
-          src={mainImg1}
+          src={mainImgDrinking}
         />
         <MainImgSlide
-          src={mainImg}
+          src={mainImgEating}
         />
         <MainImgSlide
-          src={mainImg1}
-        />
-        <MainImgSlide
-          src={mainImg}
-        />
-        <MainImgSlide
-          src={mainImg1}
-        />
-        <MainImgSlide
-          src={mainImg}
+          src={mainImgPasting}
         />
       </ul>
     </div>
