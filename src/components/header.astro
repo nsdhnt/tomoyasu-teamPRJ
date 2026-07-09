@@ -8,7 +8,7 @@ import ShopBtn from "../assets/shopBtn.png";
 <style lang="scss">
     .header {
         position: fixed;
-        width: 100%;
+        width: 393px;
         background-color: #fff;
         z-index: 100;
         margin-top: -1px;
@@ -33,7 +33,9 @@ import ShopBtn from "../assets/shopBtn.png";
             width={31}
             class="shop-btn"
         />
-        <Image src={Logo} alt="ロゴ" width={60} />
+        <a href="/">
+            <Image src={Logo} alt="ロゴ" width={60} />
+        </a>
         <Hamburger />
     </div>
 </header>
