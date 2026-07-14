@@ -5,8 +5,24 @@ import ItemLists from "../components/itemLists.astro";
 import Nav from "../components/nav.astro";
 import Images from "../components/images.astro";
 import TestLink from "../components/testLink.astro";
+import ModalWindow from "../components/modalWindow.astro";
 import Graph from "../components/graph.astro";
 ---
+
+<style lang="scss">
+  :global(.overlay){
+    // background-color: #fff;
+  }
+</style>
+
+<Layout>
+  <Main />
+  <ModalWindow />
+  <Images />
+  <Nav />
+  <ItemLists />
+  <TestLink />
+</Layout>
 
 <script>
   // import Lenis from "lenis";
@@ -33,10 +49,3 @@ import Graph from "../components/graph.astro";
 
   requestAnimationFrame(raf);
 </script>
-<Layout>
-  <Main />
-  <Images />
-  <Nav />
-  <ItemLists />
-  <TestLink />
-</Layout>
