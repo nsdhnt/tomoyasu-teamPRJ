@@ -24,12 +24,12 @@ import Images2 from "../assets/story-images2.png";
         .story-content {
             display: flex;
             position: relative;
-            z-index: 5;
             padding-top: 110px;
-            width: 100%;
             height: 510px;
             background-image: url(../assets/story-background.png);
             background-size: 100%;
+            width: 100%;
+            /* overflow: hidden; */
             background-position: center center;
             flex-direction: column;
             align-items: center;
@@ -94,6 +94,7 @@ import Images2 from "../assets/story-images2.png";
     }
     .move-images {
         position: absolute;
+        z-index: -10;
         bottom: -30%;
         display: flex;
         background-color: rgba(255, 246, 185, 0.4);
@@ -101,11 +102,7 @@ import Images2 from "../assets/story-images2.png";
         gap: 24px;
         .story-images {
             display: flex;
-            position: relative;
-            z-index: 10;
             img {
-                position: relative;
-                z-index: 10;
                 width: 100%;
                 height: 100%;
             }
@@ -149,7 +146,6 @@ import Images2 from "../assets/story-images2.png";
     const desert1 = document.querySelector(".desert1");
     const desert2 = document.querySelector(".desert2");
     const food1 = document.querySelector(".food1");
-    const storyImages = document.querySelector("story-images");
     const images1 = document.querySelector(".images1");
     const images2 = document.querySelector(".images2");
 
@@ -168,6 +164,15 @@ import Images2 from "../assets/story-images2.png";
     window.addEventListener("scroll", imagesScroll);
     imagesScroll();
 
-    let = 
-
+    images1?.animate(
+        [
+            { transform: "translateX(-100px)", opacity: 0 },
+            { transform: "translateX(0)", opacity: 1 },
+        ],
+        {
+            duration: 1000,
+            easing: "ease-out",
+            fill: "forwards",
+        },
+    );
 </script>

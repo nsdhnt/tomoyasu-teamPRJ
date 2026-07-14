@@ -14,8 +14,7 @@ import Images2 from "../assets/story-images2.png";
         display: flex;
         flex-direction: column;
         align-items: center;
-        overflow: visible;
-        margin-bottom: 224px;
+        overflow: hidden;
         .story-title {
             font-size: 3.6rem;
             color: #000;
@@ -24,13 +23,13 @@ import Images2 from "../assets/story-images2.png";
         .story-content {
             display: flex;
             position: relative;
-            z-index: 5;
             padding-top: 110px;
-            width: 100%;
             height: 510px;
             background-image: url(../assets/story-background.png);
             background-size: 100%;
+            width: 100%;
             background-position: center center;
+            display: flex;
             flex-direction: column;
             align-items: center;
             .desertImg {
@@ -94,18 +93,15 @@ import Images2 from "../assets/story-images2.png";
     }
     .move-images {
         position: absolute;
-        bottom: -30%;
+        z-index: 10;
+        bottom: -20%;
         display: flex;
         background-color: rgba(255, 246, 185, 0.4);
         flex-direction: column;
         gap: 24px;
         .story-images {
             display: flex;
-            position: relative;
-            z-index: 10;
             img {
-                position: relative;
-                z-index: 10;
                 width: 100%;
                 height: 100%;
             }
@@ -149,12 +145,11 @@ import Images2 from "../assets/story-images2.png";
     const desert1 = document.querySelector(".desert1");
     const desert2 = document.querySelector(".desert2");
     const food1 = document.querySelector(".food1");
-    const storyImages = document.querySelector("story-images");
     const images1 = document.querySelector(".images1");
     const images2 = document.querySelector(".images2");
 
     function imagesScroll() {
-        if (window.scrollY >= 500) {
+        if (window.scrollY >= 400) {
             desert1?.classList.add("show-desert1");
             desert2?.classList.add("show-desert2");
             food1?.classList.add("show-food1");
@@ -167,7 +162,4 @@ import Images2 from "../assets/story-images2.png";
 
     window.addEventListener("scroll", imagesScroll);
     imagesScroll();
-
-    let = 
-
 </script>
