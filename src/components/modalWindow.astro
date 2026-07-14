@@ -1,0 +1,146 @@
+---
+import { Image } from "astro:assets";
+import thumbMoku1 from "../assets/thumb_moku1.png";
+import thumbMoku2 from "../assets/thumb_moku2.png";
+import thumbMoku3 from "../assets/thumb_moku3.png";
+import thumbMoku4 from "../assets/thumb_moku4.png";
+
+const selectThumbData = [
+  { src: thumbMoku1, alt: "Moku1" },
+  { src: thumbMoku2, alt: "Moku2" },
+  { src: thumbMoku3, alt: "Moku3" },
+  { src: thumbMoku4, alt: "Moku4" },
+];
+---
+
+<style lang="scss">
+  .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    padding-top: 93px;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 120;
+    transition: 1s;
+    &.hidden{
+      display: none;
+      // opacity: 0;
+      // z-index: 0;
+    }
+    .windowCard{
+      width: 320px;
+      height: 586px;
+      background-color: #fff;
+      padding-top: 50px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // justify-content: center;
+      .thumbWrap{
+        // border: solid 1px black;
+        .thumbnail{
+          img{
+            width: 240px;
+            height: 240px;
+          }
+        }
+        .selectThumb{
+          padding: 16px 0;
+          display: flex;
+          gap: 10px;
+          // border: solid 1px tomato;
+          picture{
+            img{
+              width: 45px;
+              height: 45px;
+              &.active{
+                outline: solid 2px black;
+              }
+            }
+          }
+        }
+      }
+      .itemInfo{
+        width: 100%;
+        padding: 0 28px;
+        // border: solid 1px tomato;
+        p{
+          &:first-child{
+            font-size: 24px;
+          }
+          &:last-child{
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+</style>
+
+<div class="overlay hidden">
+  <div class="windowCard">
+    <div class="thumbWrap">
+      {
+        <picture class="thumbnail">
+          <Image src={thumbMoku1} alt="moku" />
+        </picture>
+      }
+      <!-- <picture class="thumbnail">
+        <Image src={thumbMoku1} alt="moku" />
+      </picture> -->
+      <div class="selectThumb">
+        {selectThumbData.map((thumb)=>(
+          <picture>
+            <Image src={thumb.src} alt={thumb.alt} />
+          </picture>
+        ))}
+        <!-- <picture>
+          <Image src={thumbMoku1} alt="moku" />
+        </picture>
+        <picture>
+          <Image src={thumbMoku2} alt="moku" />
+        </picture>
+        <picture>
+          <Image src={thumbMoku3} alt="moku" />
+        </picture>
+        <picture>
+          <Image src={thumbMoku4} alt="moku" />
+        </picture> -->
+      </div>
+    </div>
+    <div class="itemInfo">
+      <p>moku</p>
+      <p>4,000</p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // const thumbnail = document.querySelector(".thumbnail img");
+  const selectThumbs = document.querySelectorAll(".selectThumb picture img");
+  selectThumbs[0].classList.add("active");
+  selectThumbs.forEach((selectThumb) => {
+    selectThumb.addEventListener("click", ()=>{
+      selectThumbs.forEach((thumb)=>{
+        thumb.classList.remove("active");
+      })
+      selectThumb.classList.add("active");
+      const active = document.querySelector(".active");
+      console.log(active.alt);
+    });
+  });
+
+  const overlay = document.querySelector(".overlay");
+  const windowCard = document.querySelector(".windowCard");
+  overlay?.addEventListener("click", (event)=>{
+    // console.log(event.target);
+    if(event.target === overlay){
+      console.log("ok");
+      overlay.classList.add("hidden");
+    }
+  });
+</script>

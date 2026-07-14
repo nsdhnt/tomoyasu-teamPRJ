@@ -1,13 +1,198 @@
 ---
 import { Image } from "astro:assets";
-import Group from "../assets/Group 15.png";
+import Bluetile from "../assets/タイル（ブルー） 1.png";
+import Redtile from "../assets/タイル（レッド） 1.png";
+import Tile from "../assets/タイル透過 1.png";
+import Spoon from "../assets/スプーン透過 1.png";
+import Knife from "../assets/ナイフ透過 1.png";
+import Fork from "../assets/フォーク透過 1.png";
+import Light from "../assets/ライト透過 1.png";
+import HeatSink from "../assets/ヒートシンク透過 1.png";
+import Illumination from "../assets/照明透過 1.png";
 ---
 
 <style lang="scss">
     .images-wrap {
         padding-top: 60px;
+        padding-bottom: 60px;
+        .top-content {
+            display: flex;
+            justify-content: space-between;
+
+            .tiles {
+                display: flex;
+                flex-direction: column;
+                .tile {
+                    transition: 0.5s;
+                    transform: translateY(0);
+                    transition: all 0.8s ease-in-out;
+                }
+                .blue-tile {
+                    transition: 0.5s;
+                    transform: translateY(-100%);
+                    transition: all 0.8s ease-in-out;
+                }
+                .red-tile {
+                    transition: 0.5s;
+                    transform: translateY(-200%);
+                    transition: all 0.8s ease-in-out;
+                }
+                .show-tile {
+                    transform: translateY(0);
+                }
+                .show-blue {
+                    transform: translateY(-50%);
+                    // border: 10px solid lightblue;
+                }
+                .show-red {
+                    transform: translateY(-100%);
+                    // border: 10px solid lightblue;
+                }
+            }
+            .dishes {
+                display: flex;
+                flex-direction: column;
+                .spoon {
+                    transition: 0.5s;
+                    transform: translateY(0);
+                    transition: all 0.8s ease-in-out;
+                }
+                .knife {
+                    transition: 0.5s;
+                    transform: translateY(-100%);
+                    transition: all 0.8s ease-in-out;
+                }
+                .fork {
+                    transition: 0.5s;
+                    transform: translateY(-200%);
+                    transition: all 0.8s ease-in-out;
+                }
+                .show-spoon {
+                    transform: translateY(0);
+                }
+                .show-knife {
+                    transform: translateY(-50%);
+                    // border: 10px solid lightblue;
+                }
+                .show-fork {
+                    transform: translateY(-100%);
+                    // border: 10px solid lightblue;
+                }
+            }
+        }
+        .lights {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            height: 75px;
+
+            .light {
+                position: absolute;
+                transform: translateY(-50%);
+                // bottom: -7rem;
+                transition: all 0.8s ease-in-out;
+            }
+            .heat-sink {
+                position: absolute;
+                transform: translateY(-40%);
+                // bottom: -6rem;
+                // left: -1rem;
+                transition: all 0.8s ease-in-out;
+            }
+            .illumination {
+                position: absolute;
+                transform: translateY(-40%);
+                // bottom: -3rem;
+                // right: 1rem;
+                transition: all 0.8s ease-in-out;
+            }
+            .show-light {
+                transform: translateY(-90%);
+            }
+            .show-heat-sink {
+                transform: translate(-30%, -60%);
+            }
+            .show-illumination {
+                transform: translate(75%, -60%);
+            }
+        }
     }
 </style>
 <div class="images-wrap">
-    <Image src={Group} alt="商品の画像群" class="images" width={393} />
+    <div class="top-content">
+        <div class="tiles">
+            <Image src={Tile} alt="タイル" width={175} class="tile" />
+            <Image
+                src={Bluetile}
+                alt="青のタイル"
+                width={175}
+                class="blue-tile"
+            />
+            <Image
+                src={Redtile}
+                alt="赤のタイル"
+                width={175}
+                class="red-tile"
+            />
+        </div>
+        <div class="dishes">
+            <Image src={Spoon} alt="スプーン" width={135} class="spoon" />
+            <Image src={Knife} alt="ナイフ" width={135} class="knife" />
+            <Image src={Fork} alt="フォーク" width={135} class="fork" />
+        </div>
+    </div>
+    <div class="lights">
+        <Image src={Light} alt="ライト" width={300} class="light" />
+        <Image
+            src={HeatSink}
+            alt="ヒートシンク"
+            width={250}
+            class="heat-sink"
+        />
+        <Image src={Illumination} alt="照明" width={150} class="illumination" />
+    </div>
 </div>
+<script>
+    const tile = document.querySelector(".tile");
+    const blueTile = document.querySelector(".blue-tile");
+    const redTile = document.querySelector(".red-tile");
+    const spoon = document.querySelector(".spoon");
+    const knife = document.querySelector(".knife");
+    const fork = document.querySelector(".fork");
+    const light = document.querySelector(".light");
+    const heatSink = document.querySelector(".heat-sink");
+    const illumination = document.querySelector(".illumination");
+
+    function imagesScroll() {
+        if (window.scrollY >= 600) {
+            tile?.classList.add("show-tile");
+            blueTile?.classList.add("show-blue");
+            redTile?.classList.add("show-red");
+            spoon?.classList.add("show-spoon");
+            knife?.classList.add("show-knife");
+            fork?.classList.add("show-fork");
+        } else {
+            tile?.classList.remove("show-tile");
+            blueTile?.classList.remove("show-blue");
+            redTile?.classList.remove("show-red");
+            spoon?.classList.remove("show-spoon");
+            knife?.classList.remove("show-knife");
+            fork?.classList.remove("show-fork");
+        }
+    }
+    function lightScroll() {
+        if (window.scrollY >= 650) {
+            light?.classList.add("show-light");
+            heatSink?.classList.add("show-heat-sink");
+            illumination?.classList.add("show-illumination");
+        } else {
+            light?.classList.remove("show-light");
+            heatSink?.classList.remove("show-heat-sink");
+            illumination?.classList.remove("show-illumination");
+        }
+    }
+    window.addEventListener("scroll", imagesScroll);
+    window.addEventListener("scroll", lightScroll);
+    imagesScroll();
+    lightScroll();
+</script>

@@ -1,7 +1,51 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Main from "../components/main.astro";
+import ItemLists from "../components/itemLists.astro";
+import Nav from "../components/nav.astro";
+import Images from "../components/images.astro";
+import TestLink from "../components/testLink.astro";
+import ModalWindow from "../components/modalWindow.astro";
+import Graph from "../components/graph.astro";
 ---
+
+<style lang="scss">
+  :global(.overlay){
+    // background-color: #fff;
+  }
+</style>
+
 <Layout>
   <Main />
+  <ModalWindow />
+  <Images />
+  <Nav />
+  <ItemLists />
+  <TestLink />
 </Layout>
+
+<script>
+  // import Lenis from "lenis";
+
+  // const lenis = new Lenis();
+
+  // function raf(time) {
+  //   lenis.raf(time);
+  //   requestAnimationFrame(raf);
+  // }
+
+  // requestAnimationFrame(raf);
+  import Lenis from "lenis";
+
+  const lenis = new Lenis({
+    duration: 1.3,
+    smoothWheel: true,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>

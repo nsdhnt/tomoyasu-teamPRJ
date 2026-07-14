@@ -1,0 +1,382 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import returnButton from "../assets/return_button.png";
+---
+
+<style lang="scss">
+  .test{
+    width: 393px;
+    margin: 0 auto;
+    padding-top: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // border: solid 1px tomato;
+    &.hidden{
+      display: none;
+    }
+    h2{
+      font-size: 20px;
+      text-align: center;
+      width: 70%;
+      height: 87px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 62px auto;
+    }
+    .answer{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 28px;
+      row-gap: 11px;
+      li{
+        list-style: none;
+        width: 162px;
+        height: 138px;
+        background-color: #fff;
+        border: solid 4px #EAE5C6;
+        border-radius: 8px;
+        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+        transition: 0.5s;
+        &.select{
+          background-color: #EAE5C6;
+        }
+        label{
+          display: block;
+          width: 100%;
+          height: 100%;
+          // border: solid 1px tomato;
+          font-size: 20px;
+          cursor: pointer;
+          input{
+            // display: block;
+          }
+        }
+      }
+    }
+    .stepNum{
+      font-size: 20px;
+      width: 90px;
+      height: 29px;
+      margin-top: 27px;
+      margin-bottom: 47px;
+    }
+    .buttonWrap{
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      .returnButton{
+        width: 44px;
+        height: 44px;
+        background-color: #D9D9D9;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2px 5px 0 rgba(0, 0, 0, 0.18);
+        transition: 0.3s;
+        img{
+          width: 24px;
+          height: 24px;
+        }
+        &.active{
+          transform: translateX(2px) translateY(5px);
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0.18);
+        }
+      }
+      .nextButton{
+        font-size: 20px;
+        width: 222px;
+        height: 58px;
+        color: #fff;
+        background-color: #492100;
+        border-radius: 50px;
+        box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.18);
+        transition: 0.3s;
+        &.active{
+          transform: translateX(5px) translateY(5px);
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0.18);
+        }
+      }
+      .judgeButton{
+        font-size: 20px;
+        width: 222px;
+        height: 58px;
+        color: #fff;
+        background-color: #492100;
+        border-radius: 50px;
+        box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.18);
+        transition: 0.3s;
+        &.active{
+          transform: translateX(5px) translateY(5px);
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0.18);
+        }
+      }
+    }
+  }
+</style>
+
+<Layout>
+  <div class="test t1">
+    <h2>夜、お部屋の明かりを点けるとき、どんな光がほしい？</h2>
+    <ul class="answer">
+      <li><label><input type="radio" value="light1" name="light">A1</label></li>
+      <li><label><input type="radio" value="light2" name="light">A2</label></li>
+      <li><label><input type="radio" value="light3" name="light">A3</label></li>
+      <li><label><input type="radio" value="light4" name="light">A4</label></li>
+    </ul>
+    <p class="stepNum">STEP1/5</p>
+    <div class="buttonWrap">
+      <!-- <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button> -->
+      <button class="nextButton" type="button">次へ</button>
+    </div>
+  </div>
+
+  <div class="test t2 hidden">
+    <h2>2問目!!</h2>
+    <ul class="answer">
+      <li><label><input type="radio" value="dish1" name="dish">A1</label></li>
+      <li><label><input type="radio" value="dish2" name="dish">A2</label></li>
+      <li><label><input type="radio" value="dish3" name="dish">A3</label></li>
+      <li><label><input type="radio" value="dish4" name="dish">A4</label></li>
+    </ul>
+    <p class="stepNum">STEP2/5</p>
+    <div class="buttonWrap">
+      <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button>
+      <button class="nextButton" type="button">次へ</button>
+    </div>
+  </div>
+
+  <div class="test t3 hidden">
+    <h2>3問目!!</h2>
+    <ul class="answer">
+      <li><label><input type="radio" value="tile1" name="tile">A1</label></li>
+      <li><label><input type="radio" value="tile2" name="tile">A2</label></li>
+      <li><label><input type="radio" value="tile3" name="tile">A3</label></li>
+      <li><label><input type="radio" value="tile4" name="tile">A4</label></li>
+    </ul>
+    <p class="stepNum">STEP3/5</p>
+    <div class="buttonWrap">
+      <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button>
+      <button class="nextButton" type="button">次へ</button>
+    </div>
+  </div>
+
+  <div class="test t4 hidden">
+    <h2>4問目!!</h2>
+    <ul class="answer">
+      <li><label><input type="radio" value="role1" name="role">A1</label></li>
+      <li><label><input type="radio" value="role2" name="role">A2</label></li>
+      <li><label><input type="radio" value="role3" name="role">A3</label></li>
+      <li><label><input type="radio" value="role4" name="role">A4</label></li>
+    </ul>
+    <p class="stepNum">STEP4/5</p>
+    <div class="buttonWrap">
+      <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button>
+      <button class="nextButton" type="button">次へ</button>
+    </div>
+  </div>
+
+  <div class="test t5 hidden">
+    <h2>5問目!!</h2>
+    <ul class="answer">
+      <li><label><input type="radio" value="newTool1" name="newTool">A1</label></li>
+      <li><label><input type="radio" value="newTool2" name="newTool">A2</label></li>
+      <li><label><input type="radio" value="newTool3" name="newTool">A3</label></li>
+      <li><label><input type="radio" value="newTool4" name="newTool">A4</label></li>
+    </ul>
+    <p class="stepNum">STEP5/5</p>
+    <div class="buttonWrap">
+      <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button>
+      <button class="judgeButton" type="button">診断する</button>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // console.log(test?.className.slice(5));
+  function returnDisplayQuiz(){
+    const tests = document.querySelectorAll(".test");
+    tests.forEach((t) => {
+      t.classList.add("hidden");
+    })
+    count--;
+    
+    const test = document.querySelector(`.t${count}`);
+    
+    test?.classList.remove("hidden");
+  }
+
+  function nextDisplayQuiz(){
+    const tests = document.querySelectorAll(".test");
+    tests.forEach((t) => {
+      t.classList.add("hidden");
+    })
+    count++;
+    
+    const test = document.querySelector(`.t${count}`);
+    
+    test?.classList.remove("hidden");
+  }
+  let count = 1;  
+  // console.log(document.querySelector(`.t${count}`));
+  
+  
+
+  const answerButtons = document.querySelectorAll(".answer > li > label");
+  answerButtons.forEach((answerButton) => {
+    answerButton.addEventListener("click", ()=>{
+      const checkedInputs = document.querySelectorAll('input[type="radio"]:checked');
+      // console.log(checkedInputs);
+      checkedInputs.forEach((checkedInput) => {
+        // console.log(checkedInput);
+        checkedInput.closest("li")?.classList.toggle("select");
+      });
+    });
+  });
+
+  const returnButtons = document.querySelectorAll(".returnButton");
+  returnButtons.forEach((returnButton) => {
+    returnButton.addEventListener("click", ()=>{
+      returnButton.classList.add("active");
+      setTimeout(() => {
+        returnButton.classList.remove("active");
+        returnDisplayQuiz();
+      }, 200);
+    })
+  })
+
+  const nextButtons = document.querySelectorAll(".nextButton");
+  nextButtons.forEach((nextButton) => {
+    nextButton?.addEventListener("click", ()=>{
+      nextButton.classList.add("active");
+      setTimeout(() => {
+        nextButton.classList.remove("active");
+        nextDisplayQuiz();
+      }, 200);
+    });
+  });
+
+  const judgeButton = document.querySelector(".judgeButton");
+  judgeButton?.addEventListener("click", ()=>{
+    judgeButton.classList.add("active");
+    setTimeout(() => {
+      judgeButton.classList.remove("active");
+    }, 200);
+  });
+
+
+
+// 1. 全ての質問（Q1〜Q5）の選択肢データを1つにまとめる
+const diagnosticData = {
+  // Q1: 明かり
+  light1: { comfort: 3, material: 1 },
+  light2: { design: 3, material: 1 },
+  light3: { originality: 3, design: 1 },
+  light4: { function: 3, comfort: 1 },
+
+  // Q2: お皿
+  dish1: { comfort: 2, material: 3 },
+  dish2: { design: 3, comfort: 1 },
+  dish3: { originality: 3, design: 1 },
+  dish4: { function: 3, comfort: 1 },
+
+  // Q3: タイル
+  tile1: { material: 3, comfort: 2 },
+  tile2: { design: 3, comfort: 1 },
+  tile3: { originality: 3, design: 1 },
+  tile4: { function: 3, comfort: 1 },
+
+  // Q4: おうちの役割
+  role1: { comfort: 3, material: 1 },
+  role2: { design: 3, comfort: 1 },
+  role3: { originality: 3, design: 1 },
+  role4: { function: 3, comfort: 1 },
+
+  // Q5: 道具をお迎えするとき
+  newTool1: { material: 3, design: 1 },
+  newTool2: { comfort: 3, material: 1 },
+  newTool3: { function: 3, comfort: 1 },
+  newTool4: { originality: 3, design: 1 }
+};
+
+let finalResult: any = [];
+
+// 2. 合算用の計算関数
+function calcScore() {
+  let totalOriginality = 0;
+  let totalComfort = 0;
+  let totalMaterial = 0;
+  let totalDesign = 0;
+  let totalFunction = 0;
+
+  // 画面内でチェックされているラジオボタンを全て取得（Q1〜Q5まとめて）
+  const checkedInputs = document.querySelectorAll('input[type="radio"]:checked');
+
+  checkedInputs.forEach((ci) => {
+    const id = ci.value; // "light1" や "dish3" などが取れる
+    const data = diagnosticData[id]; // データベースから該当する点数データを取得
+
+    if (data) {
+      // 「|| 0」を使って、データがなくてもNaNにならないように加算
+      totalOriginality += data.originality || 0;
+      totalComfort     += data.comfort || 0;
+      totalMaterial    += data.material || 0;
+      totalDesign      += data.design || 0;
+      totalFunction    += data.function || 0;
+    }
+  });
+
+  console.log(`【現在の合計】 個性:${totalOriginality}, 居心地:${totalComfort}, 素材:${totalMaterial}, デザイン:${totalDesign}, 機能性:${totalFunction}`);
+  
+  finalResult = [
+    totalOriginality,
+    totalComfort,
+    totalMaterial,
+    totalDesign,
+    totalFunction,
+  ]
+}
+
+// 3. イベントの設定
+// ラジオボタンが切り替わるたびにリアルタイムで計算する
+const inputs = document.querySelectorAll("input[type='radio']");
+inputs.forEach((input) => {
+  input.addEventListener("change", () => {
+    calcScore();
+  });
+});
+
+// // ボタンを押したときにも計算して、画面がリロードされるのを防ぐ
+// const form = document.querySelector("form");
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+
+//   const checkedInputs = document.querySelectorAll('input[type="radio"]:checked');
+
+//   if(checkedInputs.length < 5){
+//     console.log("全ての質問に答えてください");
+//   }
+  
+//   // const finalResult = calcScore();
+//   console.log(finalResult);
+//   let totalFinalResult = finalResult.reduce((sum, current) => sum + current, 0);
+//   console.log(totalFinalResult);
+  
+  
+//   console.log(`診断完了！\n個性: ${finalResult[0]}点\n居心地: ${finalResult[1]}点\n素材: ${finalResult[2]}点\nデザイン: ${finalResult[3]}点\n機能性: ${finalResult[4]}点`);
+//   // alert("ok");
+
+//   console.log(
+//     `診断完了！\n
+//     個性: ${Math.floor(finalResult[0] / totalFinalResult * 100)}%\n
+//     居心地: ${Math.floor(finalResult[1] / totalFinalResult * 100)}%\n
+//     素材: ${Math.floor(finalResult[2] / totalFinalResult * 100)}%\n
+//     デザイン: ${Math.floor(finalResult[3] / totalFinalResult * 100)}%\n
+//     機能性: ${Math.floor(finalResult[4] / totalFinalResult * 100)}%`);
+  
+// });
+</script>
