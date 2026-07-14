@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Graph from "../components/graph.astro";
 import { Image } from "astro:assets";
+import testItemImg from "../assets/testItemImg.png";
+import testItemArrow from "../assets/testItemArrow.png";
+import recommendFunction from "../assets/recommendFunction.png";
 import returnButton from "../assets/return_button.png";
 ---
 
@@ -117,6 +121,108 @@ import returnButton from "../assets/return_button.png";
       }
     }
   }
+
+  .result{
+    padding-top: 100px;
+    // border: solid 1px tomato;
+    &.hidden{
+      display: none;
+    }
+    .graph{
+      width: 270px;
+      height: 383px;
+      margin: 0 auto;
+      // border: solid 1px black;
+    }
+    .thinking{
+      p{
+        display: flex;
+        padding: 5px 20px;
+        &:first-child{
+          font-size: 20px;
+          justify-content: flex-start;
+        }
+        &:nth-child(2){
+          font-size: 36px;
+          justify-content: center;
+        }
+        &:last-child{
+          font-size: 20px;
+          justify-content: flex-end;
+        }
+      }
+    }
+    .testItemList{
+      padding: 64px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      a{
+        color: black;
+        .testItemWrap{
+          // border: solid 1px tomato;
+          position: relative;
+          padding: 0 14px;
+          height: 124px;
+          transition: 0.5s;
+          &:hover{
+            transform: translateY(-5px);
+          }
+          .testItemImg{
+            position: absolute;
+            width: 122px;
+            height: 122px;
+            border-radius: 100px;
+            background-color: #ACD3CC;
+            border: solid 1px black;
+            z-index: 10;
+            a{
+            }
+          }
+          .testItemText{
+            position: absolute;
+            top: 7px;
+            right: 20px;
+            width: 290px;
+            height: 108px;
+            padding-top: 10px;
+            padding-left: 70px;
+            background-color: #fff;
+            border: solid 1px black;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
+            z-index: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            p{
+              // border: solid 1px black;
+              &:first-child{
+                font-size: 20px;
+              }
+              &:nth-child(2){
+                font-size: 14px;
+              }
+            }
+            img{
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+    .recommend{
+      margin: 0 auto;
+      width: fit-content;
+      p{
+        font-size: 20px;
+        padding-bottom: 22px;
+      }
+    }
+  }
 </style>
 
 <Layout>
@@ -191,13 +297,69 @@ import returnButton from "../assets/return_button.png";
     <p class="stepNum">STEP5/5</p>
     <div class="buttonWrap">
       <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button>
-      <button class="judgeButton" type="button">診断する</button>
+      <button class="nextButton judge" type="button">診断する</button>
+    </div>
+  </div>
+
+  <div class="result t6 hidden">
+    <div class="graph">
+      <Graph />
+    </div>
+    <div class="thinking">
+      <p>あなたは</p>
+      <p>機能性 重視</p>
+      <p>な考え方です</p>
+    </div>
+    <div class="testItemList">
+      <a href="#">
+        <div class="testItemWrap">
+          <div class="testItemImg">
+            <Image src={testItemImg} alt="" />
+          </div>
+          <div class="testItemText">
+            <p>moku</p>
+            <p>商品<br>説明</p>
+            <Image src={testItemArrow} alt="" />
+          </div>
+        </div>
+      </a>
+      <a href="">
+        <div class="testItemWrap">
+          <div class="testItemImg">
+            <Image src={testItemImg} alt="" />
+          </div>
+          <div class="testItemText">
+            <p>moku</p>
+            <p>商品<br>説明</p>
+            <Image src={testItemArrow} alt="" />
+          </div>
+        </div>
+      </a>
+      <a href="">
+        <div class="testItemWrap">
+          <div class="testItemImg">
+            <Image src={testItemImg} alt="" />
+          </div>
+          <div class="testItemText">
+            <p>moku</p>
+            <p>商品<br>説明</p>
+            <Image src={testItemArrow} alt="" />
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="recommend">
+      <p>こんな部屋をおすすめ</p>
+      <picture>
+        <Image src={recommendFunction} alt="" />
+      </picture>
     </div>
   </div>
 </Layout>
 
 <script>
   // console.log(test?.className.slice(5));
+  // 前の問題に戻る
   function returnDisplayQuiz(){
     const tests = document.querySelectorAll(".test");
     tests.forEach((t) => {
@@ -210,11 +372,12 @@ import returnButton from "../assets/return_button.png";
     test?.classList.remove("hidden");
   }
 
+  // 次の問題に移る
   function nextDisplayQuiz(){
     const tests = document.querySelectorAll(".test");
     tests.forEach((t) => {
       t.classList.add("hidden");
-    })
+    });
     count++;
     
     const test = document.querySelector(`.t${count}`);
@@ -246,8 +409,8 @@ import returnButton from "../assets/return_button.png";
         returnButton.classList.remove("active");
         returnDisplayQuiz();
       }, 200);
-    })
-  })
+    });
+  });
 
   const nextButtons = document.querySelectorAll(".nextButton");
   nextButtons.forEach((nextButton) => {
@@ -333,12 +496,12 @@ function calcScore() {
   console.log(`【現在の合計】 個性:${totalOriginality}, 居心地:${totalComfort}, 素材:${totalMaterial}, デザイン:${totalDesign}, 機能性:${totalFunction}`);
   
   finalResult = [
-    totalOriginality,
-    totalComfort,
-    totalMaterial,
-    totalDesign,
-    totalFunction,
-  ]
+    {name:"個性", score: totalOriginality},
+    {name:"居心地", score: totalComfort},
+    {name:"素材", score: totalMaterial},
+    {name:"デザイン", score: totalDesign},
+    {name:"機能性", score: totalFunction},
+  ];
 }
 
 // 3. イベントの設定

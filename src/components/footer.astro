@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import flower from "../assets/flower.png";
-import eating from "../assets/eating.png";
+import footerDog from "../assets/footerDog.png";
 import logo from "../assets/logo.png";
 ---
 
@@ -10,6 +10,7 @@ import logo from "../assets/logo.png";
     // border: solid 1px black;
     width: 100%;
     margin: 0 auto;
+    transform: translateY(10px);
     .footerImg{
       display: flex;
       justify-content: space-between;
@@ -19,6 +20,12 @@ import logo from "../assets/logo.png";
       picture{
         &:first-child{
           margin-bottom: 8px;
+        }
+        &:nth-child(2){
+          img{
+            width: 144px;
+            height: 192px;
+          }
         }
         &:last-child{
           margin-bottom: 8px;
@@ -50,7 +57,7 @@ import logo from "../assets/logo.png";
       <Image src={flower} alt="" />
     </picture>
     <picture>
-      <Image src={eating} alt="" />
+      <Image src={footerDog} alt="" />
     </picture>
     <picture>
       <Image src={flower} alt="" />
