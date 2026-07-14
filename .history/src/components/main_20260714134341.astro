@@ -27,7 +27,7 @@ import Story from "../components/story.astro";
       display: flex;
       position: relative;
       // border: solid 1px tomato;
-      &::-webkit-scrollbar {
+      &::-webkit-scrollbar{
         display: none;
       }
       // .modalButton{
@@ -47,7 +47,7 @@ import Story from "../components/story.astro";
         display: flex;
         // border: solid 1px tomato;
         // transform: translateX(-100%);
-        img {
+        img{
           border: solid 1px black;
         }
       }
@@ -69,12 +69,13 @@ import Story from "../components/story.astro";
         width: 22px;
       }
     }
-    .modalWindow {
-      &.hidden {
+    .modalWindow{
+      &.hidden{
         display: none;
       }
     }
   }
+
 </style>
 
 <main>
@@ -84,9 +85,15 @@ import Story from "../components/story.astro";
         <Image src={modalButton} alt="" />
       </div> -->
       <ul class="mainImg">
-        <MainImgSlide src={mainImgDrinking} />
-        <MainImgSlide src={mainImgEating} />
-        <MainImgSlide src={mainImgPasting} />
+        <MainImgSlide
+          src={mainImgDrinking}
+        />
+        <MainImgSlide
+          src={mainImgEating}
+        />
+        <MainImgSlide
+          src={mainImgPasting}
+        />
       </ul>
     </div>
     <div class="explore">
@@ -94,5 +101,9 @@ import Story from "../components/story.astro";
       <p>explore</p>
       <Image src={explore} alt="" />
     </div>
+    <Nav />
+    <Story />
+    <Images />
   </div>
 </main>
+
