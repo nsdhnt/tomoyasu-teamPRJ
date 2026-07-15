@@ -14,6 +14,18 @@ import Story from "../components/story.astro";
 ---
 
 <style lang="scss">
+  @keyframes slideWindow {
+    0%, 30%{
+      transform: translateX(0);
+    }
+    35%, 65%{
+      transform: translateX(-393px);
+    }
+    70%, 100%{
+      transform: translateX(-786px);
+    }
+  }
+
   .main {
     width: 393px;
     // height: 1000px;
@@ -30,25 +42,11 @@ import Story from "../components/story.astro";
       &::-webkit-scrollbar {
         display: none;
       }
-      // .modalButton{
-      //   position: absolute;
-      //   top: 240px;
-      //   left: 227px;
-      //   width: 17px;
-      //   height: 17px;
-      //   z-index: 90;
-      //   img{
-      //     cursor: pointer;
-      //     width: 100%;
-      //     height: 100%;
-      //   }
-      // }
       .mainImg {
         display: flex;
-        // border: solid 1px tomato;
-        // transform: translateX(-100%);
+        animation: slideWindow 15s ease-in-out infinite;
         img {
-          border: solid 1px black;
+          // border: solid 1px black;
         }
       }
     }
@@ -80,9 +78,6 @@ import Story from "../components/story.astro";
 <main>
   <div class="main">
     <div class="mainImgWrap">
-      <!-- <div class="modalButton">
-        <Image src={modalButton} alt="" />
-      </div> -->
       <ul class="mainImg">
         <MainImgSlide src={mainImgDrinking} />
         <MainImgSlide src={mainImgEating} />
