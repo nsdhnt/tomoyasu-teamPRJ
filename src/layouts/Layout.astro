@@ -10,7 +10,15 @@ import "ress";
 	html {
 		font-size: 62.5%;
 	}
-	body {
+	body{
+		/* background-color: black; */
+		background: url("../assets/pc-background.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		background-attachment: fixed;
+	}
+	.mobile {
 		font-family: "Zen Kurenaido", cursive;
 		margin: 0 auto;
 		width: 393px;
@@ -42,8 +50,10 @@ import "ress";
 		<title>チームプロジェクト</title>
 	</head>
 	<body>
-		<Header />
-		<slot />
-		<Footer />
+		<div class="mobile">
+			<Header />
+			<slot />
+			<Footer />
+		</div>
 	</body>
 </html>
