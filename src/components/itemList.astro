@@ -4,15 +4,19 @@ import { Image } from "astro:assets";
 import ItemThumb from "../assets/item_thumb.png";
 // import ItemIcon from "../assets/item_icon.png";
 // import mainItemView from "../assets/main_item_view.png";
-const { tabBlockName, mainItemView, itemIcon, itemImg2, itemImg3, itemImg4, itemImg5 } = Astro.props;
+const { tabBlockName, mainItemView, itemIcon, items } = Astro.props;
 
-const initialItems = [
-  { src: mainItemView, name: "ガレット" },
-  { src: itemImg2, name: "トルテ" },
-  { src: itemImg3, name: "ピュレ" },
-  { src: itemImg4, name: "マカロン" },
-  { src: itemImg5, name: "マジョリカ" },
-];
+const initialItems = items.slice(0, 5);
+const moreItems = items.slice(5);
+const totalCount = items.length;
+
+// const initialItems = [
+//   { src: mainItemView, name: "ガレット" },
+//   { src: itemImg2, name: "トルテ" },
+//   { src: itemImg3, name: "ピュレ" },
+//   { src: itemImg4, name: "マカロン" },
+//   { src: itemImg5, name: "マジョリカ" },
+// ];
 
 // const moreItems = [
 //   { src: , name: "" },
@@ -22,9 +26,9 @@ const initialItems = [
 
 
 <style lang="scss">
-  .itemList{
+  .item-list{
     // background: url("../assets/brick_background.png");
-    .mainThumb{
+    .main-thumb{
       position: relative;
       picture{
         &:first-child{
@@ -49,25 +53,14 @@ const initialItems = [
       padding-top: 70px;
       padding-bottom: 45px;
     }
-    .itemImgs{
+    .item-imgs, .more-imgs{
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 24px;
-      .itemImg {
-        picture {
-          img {
-            box-shadow: 9px 9px 15px rgb(0, 0, 0, 0.25);
-            border-radius: 17px;
-          }
-        }
-        p {
-          text-align: center;
-          font-size: 20px;
-        }
-      }
+      width: 100%;
     }
-    .moreImgs{
+    .more-imgs{
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -76,30 +69,18 @@ const initialItems = [
       &.hidden{
         display: none;
       }
-      .itemImg{
-        picture{
-          img{
-            box-shadow: 9px 9px 15px rgb(0, 0, 0, 0.25);
-            border-radius: 17px;
-          }
-        }
-      }
-      p{
-        text-align: center;
-        font-size: 20px;
-      }
     }
     
-    .moreBtn{
+    .more-btn{
       text-align: center;
-      font-size: 20px;
+      font-size: 30px;
       padding-top: 10px;
       padding-bottom: 20px;
       cursor: pointer;
       &:hover{
         text-decoration: underline;
         text-underline-offset: 5px;
-        text-decoration-thickness: 1px;
+        text-decoration-thickness: 2px;
       }
     }
   }
@@ -107,52 +88,35 @@ const initialItems = [
 </style>
 
 
-<div class="itemList">
-  <div class="mainThumb">
+<div class="item-list">
+  <div class="main-thumb">
     <picture><Image src={ItemThumb} alt="" /></picture>
     <picture><Image src={itemIcon} alt="" /></picture>
   </div>
-  <h2>{tabBlockName}<br>全○種類</h2>
-  <div class="itemImgs">
-    <!-- <div class="itemImg">
-      <picture><Image src={mainItemView} alt="" /></picture>
-      <p>ガレット</p>
-    </div> -->
+  <h2>{tabBlockName}</h2>
+  <div class="item-imgs">
     {initialItems.map((item) => (
-      <ItemImg 
-        src={item.src}
-        itemName={item.name}
+      <ItemImg src={item.src} itemName={item.name}
       />
     ))}
   </div>
   
-  
-  <div class="moreImgs hidden">
-    <ItemImg
-    src={itemImg2}
-    itemName="トルテ"
-    />
-    <ItemImg
-    src={itemImg2}
-    itemName="トルテ"
-    />
-    <ItemImg
-    src={itemImg2}
-    itemName="トルテ"
-    />
-    <ItemImg
-    src={itemImg2}
-    itemName="トルテ"
-    />
-  </div>
-  
-  <p class="moreBtn">view more</p>
+  {moreItems.length > 0 && (
+    <>
+      <div class="more-imgs hidden">
+        {moreItems.map((item) => (
+          <ItemImg src={item.src} itemName={item.name} />
+        ))}
+      </div>
+      <p class="more-btn">view more</p>
+    </>
+  )}  
 </div>
 
 
 <script>
-  const moreBtn = document.querySelector(".moreBtn");
-  const moreImgs = document.querySelector(".moreImgs");
+  const moreBtn = document.querySelector(".more-btn");
+  const moreImgs = document.querySelector(".more-imgs");
   moreBtn?.addEventListener("click", ()=>{
     moreImgs?.classList.toggle("hidden");
   });

@@ -2,30 +2,32 @@
 import { Image } from "astro:assets";
 import ItemThumb from "../assets/item_thumb.png";
 import ItemIcon from "../assets/item_icon.png";
-import mainItemView from "../assets/main_item_view.png";
-import tile2 from "../assets/tile2.png";
-import tile3 from "../assets/tile3.png";
-import tile4 from "../assets/tile4.png";
-import tile5 from "../assets/tile5.png";
 const { src, itemName } = Astro.props;
 ---
-
-<script>
-  const moreBtn = document.querySelector(".moreBtn");
-  const moreImgs = document.querySelector(".moreImgs");
-  moreBtn?.addEventListener("click", ()=>{
-    moreImgs?.classList.toggle("hidden");
-  });
-</script>
 
 
 
 <style lang="scss">
-  .itemImg {
+  .item-img {
     picture {
+      display: block;
+      width: 147px;
+      height: 181px;
+      background-color: #fff;
+      border-radius: 17px;
       img {
+        // width: 147px;
+        // height: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         box-shadow: 9px 9px 15px rgb(0, 0, 0, 0.25);
-        border-radius: 17px;
+        border-radius: inherit;
+      }
+    }
+    &:first-child{
+      picture{
+        width: 318px;
       }
     }
     p {
@@ -35,7 +37,8 @@ const { src, itemName } = Astro.props;
   }
 </style>
 
-<div class="itemImg">
+<div class="item-img">
   <picture><Image src={src} alt="" /></picture>
   <p>{itemName}</p>
 </div>
+
