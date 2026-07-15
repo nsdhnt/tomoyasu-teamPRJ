@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import ModalWindow from "../components/modalWindow.astro";
 import modalButton from "../assets/modalButton.png";
 import leftWindow from "../assets/leftWindow.png";
 import rightWindow from "../assets/rightWindow.png";
@@ -14,7 +13,6 @@ const { src } = Astro.props;
     justify-content: center;
     padding: 0 56px;
     list-style: none;
-    // border: solid 1px tomato;
     &:nth-child(2){
       padding: 0;
     }
@@ -116,9 +114,6 @@ const { src } = Astro.props;
     </div>
   </picture>
 </li>
-<!-- <div class="modalWindow">
-  <ModalWindow />
-</div> -->
 
 
 <script>
@@ -126,13 +121,9 @@ const { src } = Astro.props;
     const windowWrap = li.querySelector(".windowWrap");
     const modalButtton = li.querySelector(".modalButton");
 
-    li.addEventListener("mouseenter", ()=>{
-      windowWrap?.classList.add("open");
-      modalButtton?.classList.add("open");
-    });
-    li.addEventListener("mouseleave", ()=>{
-      windowWrap?.classList.remove("open");
-      modalButtton?.classList.remove("open");
+    li.addEventListener("click", ()=>{
+      windowWrap?.classList.toggle("open");
+      modalButtton?.classList.toggle("open");
     });
   });
 
