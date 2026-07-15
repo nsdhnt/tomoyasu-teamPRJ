@@ -13,8 +13,13 @@ import Illumination from "../assets/照明透過 1.png";
 
 <style lang="scss">
     .images-wrap {
-        padding-top: 60px;
+        padding-top: 100px;
         padding-bottom: 60px;
+        .images-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
         .top-content {
             display: flex;
             justify-content: space-between;
@@ -119,6 +124,7 @@ import Illumination from "../assets/照明透過 1.png";
     }
 </style>
 <div class="images-wrap">
+    <h2 class="images-title">ALL items</h2>
     <div class="top-content">
         <div class="tiles">
             <Image src={Tile} alt="タイル" width={175} class="tile" />
@@ -164,7 +170,7 @@ import Illumination from "../assets/照明透過 1.png";
     const illumination = document.querySelector(".illumination");
 
     function imagesScroll() {
-        if (window.scrollY >= 1150) {
+        if (window.scrollY >= 2200) {
             tile?.classList.add("show-tile");
             blueTile?.classList.add("show-blue");
             redTile?.classList.add("show-red");
@@ -181,7 +187,7 @@ import Illumination from "../assets/照明透過 1.png";
         }
     }
     function lightScroll() {
-        if (window.scrollY >= 1450) {
+        if (window.scrollY >= 2450) {
             light?.classList.add("show-light");
             heatSink?.classList.add("show-heat-sink");
             illumination?.classList.add("show-illumination");
