@@ -4,21 +4,42 @@ import { Image } from "astro:assets";
 import ItemThumb from "../assets/item_thumb.png";
 import tileIcon from "../assets/item_icon.png";
 import mainTileView from "../assets/main_item_view.png";
-import tile2 from "../assets/tile2.png";
-import tile3 from "../assets/tile3.png";
-import tile4 from "../assets/tile4.png";
-import tile5 from "../assets/tile5.png";
 
+// 画像のインポート
+import tileKonpeitou from "../assets/tile-konpeitou.jpg";
+import tileFran from "../assets/tile-fran.jpg";
+import tileHarucaratto from "../assets/tile-harucaratto.jpg";
+import tileMacaronBlue from "../assets/tile-macaron-blue.jpg";
+import tileMacaronWhite from "../assets/tile-macaron-white.jpg";
+import tileMajolica from "../assets/tile-majolica.jpg";
+import tilePyureGray from "../assets/tile-pyure-gray.jpg";
+import tilePyurePink from "../assets/tile-pyure-pink.jpg";
+import tilePyureWhite from "../assets/tile-pyure-white.jpg";
+import tileToruteBlack from "../assets/tile-torute-black.jpg";
+import tileToruteWhite from "../assets/tile-torute-white.jpg";
+
+// タイル画像データ
+const tileItems = [
+  { src: tileKonpeitou, name: "konpeitou" },
+  { src: tileFran, name: "fran" },
+  { src: tileHarucaratto, name: "harucaratto" },
+  { src: tileMacaronBlue, name: "macaron" },
+  { src: tileMacaronWhite, name: "macaron" },
+  { src: tileMajolica, name: "majolica" },
+  { src: tilePyureGray, name: "pyure" },
+  { src: tilePyurePink, name: "pyure" },
+  { src: tilePyureWhite, name: "pyure" },
+  { src: tileToruteBlack, name: "torute" },
+  { src: tileToruteWhite, name: "torute" },
+];
 ---
 
 
 <style lang="scss">
-  .itemLists{
+  .item-lists{
     width: 393px;
     margin: 0 auto;
     padding-bottom: 72px;
-    // background: url("../assets/brick_background.png");
-    // border: solid 1px tomato;
     div{
       display: none;
       &.active{
@@ -28,16 +49,13 @@ import tile5 from "../assets/tile5.png";
   }
 </style>
 
-<div class="itemLists">
-  <div class="tile active">
+<div class="item-lists">
+  <div class="TILE active">
     <ItemList
-      tabBlockName="タイル"
+      tabBlockName="TILE"
       mainItemView={mainTileView}
       itemIcon={tileIcon}
-      itemImg2={tile2}
-      itemImg3={tile3}
-      itemImg4={tile4}
-      itemImg5={tile5}
+      items={tileItems}
     />
   </div>
   <div class="ARAS">
@@ -45,37 +63,25 @@ import tile5 from "../assets/tile5.png";
       tabBlockName="ARAS"
       mainItemView={mainTileView}
       itemIcon={tileIcon}
-      itemImg2={tile3}
-      itemImg3={tile3}
-      itemImg4={tile3}
-      itemImg5={tile3}
+      items={tileItems}
     />
   </div>
   <div class="MOKU">
     <ItemList
-      tabBlockName="moku"
+      tabBlockName="MOKU"
       mainItemView={mainTileView}
       itemIcon={tileIcon}
-      itemImg2={tile2}
-      itemImg3={tile3}
-      itemImg4={tile4}
-      itemImg5={tile5}
+      items={tileItems}
     />
   </div>
 </div>
 
 <script>
-  const moreBtn = document.querySelector(".moreBtn");
-  const moreImgs = document.querySelector(".moreImgs");
-  moreBtn?.addEventListener("click", ()=>{
-    moreImgs?.classList.toggle("hidden");
-  });
-
   window.addEventListener("toggle-items", (e)=>{
     // navで押したタブ名を取得
     const tabNameClass = e.detail.tabName;
     // console.log(tabNameClass);
-    const itemLists = document.querySelectorAll(".itemLists > div");
+    const itemLists = document.querySelectorAll(".item-lists > div");
     itemLists.forEach((itemList)=>{
       // 各商品一覧のactiveを削除
       itemList.classList.remove("active");
@@ -87,4 +93,5 @@ import tile5 from "../assets/tile5.png";
     });
   });
 </script>
+
 
