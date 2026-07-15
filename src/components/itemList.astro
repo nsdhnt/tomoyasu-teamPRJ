@@ -119,6 +119,13 @@ const totalCount = items.length;
   const moreImgs = document.querySelector(".more-imgs");
   moreBtn?.addEventListener("click", ()=>{
     moreImgs?.classList.toggle("hidden");
+    console.log(moreImgs?.className);
+    if(moreImgs?.className === "more-imgs hidden"){
+      moreBtn.textContent = "view more";
+    }
+    else{
+      moreBtn.textContent = "close";
+    }
   });
 
 </script>
