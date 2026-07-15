@@ -6,17 +6,81 @@ import testItemImg from "../assets/testItemImg.png";
 import testItemArrow from "../assets/testItemArrow.png";
 import recommendFunction from "../assets/recommendFunction.png";
 import returnButton from "../assets/return_button.png";
+
+
+// 質問＆回答データ
+const questions = [
+  {
+    step: 1,
+    title: "夜、お部屋の明かりを点けるとき、どんな光がほしい？",
+    name: "light",
+    answers: [
+      { id: "light1", text: "心が落ち着く、あたたかい光", score: { comfort: 3, material: 1 } },
+      { id: "light2", text: "思わず見惚れるおしゃれな光", score: { design: 3, material: 1 } },
+      { id: "light3", text: "他にはない、印象に残る光", score: { originality: 3, design: 1 } },
+      { id: "light4", text: "手元が見やすく便利な光", score: { function: 3, comfort: 1 } },
+    ]
+  },
+  {
+    step: 2,
+    title: "お気に入りの『お皿』を使うなら、どんな一皿に惹かれる？",
+    name: "dish",
+    answers: [
+      { id: "dish1", text: "手に馴染むほっこりした質感", score: { comfort: 2, material: 3 } },
+      { id: "dish2", text: "リム（縁）のラインが綺麗", score: { design: 3, comfort: 1 } },
+      { id: "dish3", text: "テーブルの上でパッと目を引く", score: { originality: 3, design: 1 } },
+      { id: "dish4", text: "軽くて頑丈、毎日使えるお皿", score: { function: 3, comfort: 1 } },
+    ]
+  },
+  {
+    step: 3,
+    title: "キッチンや洗面所の壁に『タイル』を貼るとしたら、どんな空間に仕上げたい？",
+    name: "tile",
+    answers: [
+      { id: "tile1", text: "空間全体が優しい印象になるもの", score: { material: 3, comfort: 2 } },
+      { id: "tile2", text: "すっきりと洗練されたモダンな空間", score: { design: 3, comfort: 1 } },
+      { id: "tile3", text: "自分のこだわりを詰め込んだ特別な空間", score: { originality: 3, design: 1 } },
+      { id: "tile4", text: "お手入れがとにかく楽なもの", score: { function: 3, comfort: 1 } },
+    ]
+  },
+  {
+    step: 4,
+    title: "家で過ごす時間、あなたにとって一番大切な『おうちの役割』はどれ？",
+    name: "role",
+    answers: [
+      { id: "role1", text: "心と体を完全にリセットする場所", score: { comfort: 3, material: 1 } },
+      { id: "role2", text: "空間そのものの美しさを愛でる場所", score: { design: 3, comfort: 1 } },
+      { id: "role3", text: "自分の「好き」を100%爆発させる場所", score: { originality: 3, design: 1 } },
+      { id: "role4", text: "ストレスなく快適に暮らせる場所", score: { function: 3, comfort: 1 } },
+    ]
+  },
+  {
+    step: 5,
+    title: "暮らしの道具（家具や雑貨）を新しくお迎えするとき、一番心が動く瞬間は？",
+    name: "newTool",
+    answers: [
+      { id: "newTool1", text: "使い込むほどに味が出る表情を見たとき", score: { material: 3, design: 1 } },
+      { id: "newTool2", text: "包み込まれるような安心感を感じたとき", score: { comfort: 3, material: 1 } },
+      { id: "newTool3", text: "暮らしが便利になると確信したとき", score: { function: 3, comfort: 1 } },
+      { id: "newTool4", text: "運命を感じたとき", score: { originality: 3, design: 1 } },
+    ]
+  }
+];
+
+// 全質問数（STEPの最大値に自動的に代入されます）
+const totalSteps = questions.length;
 ---
 
 <style lang="scss">
+  // （既存のスタイルをそのまま引き継ぎます）
   .test{
-    width: 393px;
+    width: 100%;
+    max-width: 393px;
     margin: 0 auto;
     padding-top: 64px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    // border: solid 1px tomato;
     &.hidden{
       display: none;
     }
@@ -52,11 +116,14 @@ import returnButton from "../assets/return_button.png";
           display: block;
           width: 100%;
           height: 100%;
-          // border: solid 1px tomato;
+          padding: 0 5px;
           font-size: 20px;
           cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           input{
-            // display: block;
+            display: none;
           }
         }
       }
@@ -91,21 +158,7 @@ import returnButton from "../assets/return_button.png";
           box-shadow: 0 0 0 rgba(0, 0, 0, 0.18);
         }
       }
-      .nextButton{
-        font-size: 20px;
-        width: 222px;
-        height: 58px;
-        color: #fff;
-        background-color: #492100;
-        border-radius: 50px;
-        box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.18);
-        transition: 0.3s;
-        &.active{
-          transform: translateX(5px) translateY(5px);
-          box-shadow: 0 0 0 rgba(0, 0, 0, 0.18);
-        }
-      }
-      .judgeButton{
+      .nextButton, .judgeButton {
         font-size: 20px;
         width: 222px;
         height: 58px;
@@ -124,7 +177,6 @@ import returnButton from "../assets/return_button.png";
 
   .result{
     padding-top: 100px;
-    // border: solid 1px tomato;
     &.hidden{
       display: none;
     }
@@ -132,7 +184,6 @@ import returnButton from "../assets/return_button.png";
       width: 270px;
       height: 383px;
       margin: 0 auto;
-      // border: solid 1px black;
     }
     .thinking{
       p{
@@ -145,6 +196,9 @@ import returnButton from "../assets/return_button.png";
         &:nth-child(2){
           font-size: 36px;
           justify-content: center;
+          background: url("../assets/test-line-function.png");
+          background-repeat: no-repeat;
+          background-position: center bottom;
         }
         &:last-child{
           font-size: 20px;
@@ -160,7 +214,6 @@ import returnButton from "../assets/return_button.png";
       a{
         color: black;
         .testItemWrap{
-          // border: solid 1px tomato;
           position: relative;
           padding: 0 14px;
           height: 124px;
@@ -176,8 +229,6 @@ import returnButton from "../assets/return_button.png";
             background-color: #ACD3CC;
             border: solid 1px black;
             z-index: 10;
-            a{
-            }
           }
           .testItemText{
             position: absolute;
@@ -195,7 +246,6 @@ import returnButton from "../assets/return_button.png";
             flex-direction: column;
             gap: 8px;
             p{
-              // border: solid 1px black;
               &:first-child{
                 font-size: 20px;
               }
@@ -226,82 +276,55 @@ import returnButton from "../assets/return_button.png";
 </style>
 
 <Layout>
-  <div class="test t1">
-    <h2>夜、お部屋の明かりを点けるとき、どんな光がほしい？</h2>
-    <ul class="answer">
-      <li><label><input type="radio" value="light1" name="light">A1</label></li>
-      <li><label><input type="radio" value="light2" name="light">A2</label></li>
-      <li><label><input type="radio" value="light3" name="light">A3</label></li>
-      <li><label><input type="radio" value="light4" name="light">A4</label></li>
-    </ul>
-    <p class="stepNum">STEP1/5</p>
-    <div class="buttonWrap">
-      <!-- <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button> -->
-      <button class="nextButton" type="button">次へ</button>
-    </div>
-  </div>
+  {questions.map((q, index) => {
+    const isFirst = index === 0;
+    const isLast = index === questions.length - 1;
+    return (
+      <div 
+        class={`test t${q.step} ${isFirst ? '' : 'hidden'}`} 
+        data-step={q.step}
+      >
+        <h2>{q.title}</h2>
+        <ul class="answer">
+          {q.answers.map((ans) => (
+            <li>
+              <label>
+                <input 
+                  type="radio" 
+                  value={ans.id} 
+                  name={q.name}
+                  data-originality={ans.score.originality || 0}
+                  data-comfort={ans.score.comfort || 0}
+                  data-material={ans.score.material || 0}
+                  data-design={ans.score.design || 0}
+                  data-function={ans.score.function || 0}
+                />
+                {ans.text}
+              </label>
+            </li>
+          ))}
+        </ul>
+        <p class="stepNum">STEP{q.step}/{totalSteps}</p>
+        <div class="buttonWrap">
+          {!isFirst && (
+            <button class="returnButton" type="button">
+              <Image src={returnButton} alt="戻る" />
+            </button>
+          )}
+          
+          {/* 最後の質問なら「診断する」、途中なら「次へ」を表示 */}
+          {isLast ? (
+            <button class="judgeButton" type="button">診断する</button>
+          ) : (
+            <button class="nextButton" type="button">次へ</button>
+          )}
+        </div>
+      </div>
+    );
+  })}
 
-  <div class="test t2 hidden">
-    <h2>2問目!!</h2>
-    <ul class="answer">
-      <li><label><input type="radio" value="dish1" name="dish">A1</label></li>
-      <li><label><input type="radio" value="dish2" name="dish">A2</label></li>
-      <li><label><input type="radio" value="dish3" name="dish">A3</label></li>
-      <li><label><input type="radio" value="dish4" name="dish">A4</label></li>
-    </ul>
-    <p class="stepNum">STEP2/5</p>
-    <div class="buttonWrap">
-      <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button>
-      <button class="nextButton" type="button">次へ</button>
-    </div>
-  </div>
-
-  <div class="test t3 hidden">
-    <h2>3問目!!</h2>
-    <ul class="answer">
-      <li><label><input type="radio" value="tile1" name="tile">A1</label></li>
-      <li><label><input type="radio" value="tile2" name="tile">A2</label></li>
-      <li><label><input type="radio" value="tile3" name="tile">A3</label></li>
-      <li><label><input type="radio" value="tile4" name="tile">A4</label></li>
-    </ul>
-    <p class="stepNum">STEP3/5</p>
-    <div class="buttonWrap">
-      <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button>
-      <button class="nextButton" type="button">次へ</button>
-    </div>
-  </div>
-
-  <div class="test t4 hidden">
-    <h2>4問目!!</h2>
-    <ul class="answer">
-      <li><label><input type="radio" value="role1" name="role">A1</label></li>
-      <li><label><input type="radio" value="role2" name="role">A2</label></li>
-      <li><label><input type="radio" value="role3" name="role">A3</label></li>
-      <li><label><input type="radio" value="role4" name="role">A4</label></li>
-    </ul>
-    <p class="stepNum">STEP4/5</p>
-    <div class="buttonWrap">
-      <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button>
-      <button class="nextButton" type="button">次へ</button>
-    </div>
-  </div>
-
-  <div class="test t5 hidden">
-    <h2>5問目!!</h2>
-    <ul class="answer">
-      <li><label><input type="radio" value="newTool1" name="newTool">A1</label></li>
-      <li><label><input type="radio" value="newTool2" name="newTool">A2</label></li>
-      <li><label><input type="radio" value="newTool3" name="newTool">A3</label></li>
-      <li><label><input type="radio" value="newTool4" name="newTool">A4</label></li>
-    </ul>
-    <p class="stepNum">STEP5/5</p>
-    <div class="buttonWrap">
-      <button class="returnButton" type="button"><Image src={returnButton} alt="戻る" /></button>
-      <button class="nextButton judge" type="button">診断する</button>
-    </div>
-  </div>
-
-  <div class="result t6 hidden">
+  {/* 結果画面 */}
+  <div class="result t{totalSteps + 1} hidden">
     <div class="graph">
       <Graph />
     </div>
@@ -312,18 +335,6 @@ import returnButton from "../assets/return_button.png";
     </div>
     <div class="testItemList">
       <a href="#">
-        <div class="testItemWrap">
-          <div class="testItemImg">
-            <Image src={testItemImg} alt="" />
-          </div>
-          <div class="testItemText">
-            <p>moku</p>
-            <p>商品<br>説明</p>
-            <Image src={testItemArrow} alt="" />
-          </div>
-        </div>
-      </a>
-      <a href="">
         <div class="testItemWrap">
           <div class="testItemImg">
             <Image src={testItemImg} alt="" />
@@ -358,52 +369,62 @@ import returnButton from "../assets/return_button.png";
 </Layout>
 
 <script>
-  // console.log(test?.className.slice(5));
-  // 前の問題に戻る
-  function returnDisplayQuiz(){
+  let count = 1;
+  // 質問数
+  const totalQuestions = document.querySelectorAll(".test").length;
+
+  // 表示の切り替え処理
+  function switchDisplay(targetCount: number) {
     const tests = document.querySelectorAll(".test");
-    tests.forEach((t) => {
-      t.classList.add("hidden");
-    })
-    count--;
-    
-    const test = document.querySelector(`.t${count}`);
-    
-    test?.classList.remove("hidden");
+    const result = document.querySelector(".result");
+
+    // 全ての質問と結果を一旦非表示
+    tests.forEach((t) => t.classList.add("hidden"));
+    result?.classList.add("hidden");
+
+    if (targetCount <= totalQuestions) {
+      // 途中の質問画面を表示
+      const nextTest = document.querySelector(`.t${targetCount}`);
+      nextTest?.classList.remove("hidden");
+    } else {
+      // 結果画面の表示
+      result?.classList.remove("hidden");
+      calcScore();
+    }
   }
 
-  // 次の問題に移る
-  function nextDisplayQuiz(){
-    const tests = document.querySelectorAll(".test");
-    tests.forEach((t) => {
-      t.classList.add("hidden");
-    });
+  // 「戻る」処理
+  function returnDisplayQuiz() {
+    if (count > 1) {
+      count--;
+      switchDisplay(count);
+    }
+  }
+
+  // 「次へ」処理
+  function nextDisplayQuiz() {
     count++;
-    
-    const test = document.querySelector(`.t${count}`);
-    
-    test?.classList.remove("hidden");
+    switchDisplay(count);
   }
-  let count = 1;  
-  // console.log(document.querySelector(`.t${count}`));
-  
-  
 
-  const answerButtons = document.querySelectorAll(".answer > li > label");
-  answerButtons.forEach((answerButton) => {
-    answerButton.addEventListener("click", ()=>{
-      const checkedInputs = document.querySelectorAll('input[type="radio"]:checked');
-      // console.log(checkedInputs);
-      checkedInputs.forEach((checkedInput) => {
-        // console.log(checkedInput);
-        checkedInput.closest("li")?.classList.toggle("select");
+  // ラジオボタン選択時
+  const answerLists = document.querySelectorAll(".answer");
+  answerLists.forEach((list) => {
+    const inputs = list.querySelectorAll('input[type="radio"]');
+    inputs.forEach((input) => {
+      input.addEventListener("change", () => {
+        // 同じ質問グループの全選択肢から select クラスを削除
+        list.querySelectorAll("li").forEach((li) => li.classList.remove("select"));
+        // 現在選択されたラジオボタンの親要素(li)に select を追加
+        input.closest("li")?.classList.add("select");
       });
     });
   });
 
+  // 戻るボタンの設定
   const returnButtons = document.querySelectorAll(".returnButton");
   returnButtons.forEach((returnButton) => {
-    returnButton.addEventListener("click", ()=>{
+    returnButton.addEventListener("click", () => {
       returnButton.classList.add("active");
       setTimeout(() => {
         returnButton.classList.remove("active");
@@ -412,9 +433,19 @@ import returnButton from "../assets/return_button.png";
     });
   });
 
+  // 次へボタンの設定
   const nextButtons = document.querySelectorAll(".nextButton");
   nextButtons.forEach((nextButton) => {
-    nextButton?.addEventListener("click", ()=>{
+    nextButton.addEventListener("click", () => {
+      // 現在の質問でラジオボタンが選択されているか確認
+      const currentTest = document.querySelector(`.t${count}`);
+      const checked = currentTest?.querySelector('input[type="radio"]:checked');
+
+      if (!checked) {
+        alert("選択肢を1つ選んでください");
+        return;
+      }
+
       nextButton.classList.add("active");
       setTimeout(() => {
         nextButton.classList.remove("active");
@@ -423,123 +454,65 @@ import returnButton from "../assets/return_button.png";
     });
   });
 
+  // 診断するボタンの設定
   const judgeButton = document.querySelector(".judgeButton");
-  judgeButton?.addEventListener("click", ()=>{
+  judgeButton?.addEventListener("click", () => {
+    const currentTest = document.querySelector(`.t${count}`);
+    const checked = currentTest?.querySelector('input[type="radio"]:checked');
+
+    if (!checked) {
+      alert("選択肢を1つ選んでください");
+      return;
+    }
+
     judgeButton.classList.add("active");
     setTimeout(() => {
       judgeButton.classList.remove("active");
+      nextDisplayQuiz(); 
     }, 200);
   });
 
+  // 💡 5. 合算用の計算関数
+  // HTML要素に埋め込んだ score データを自動で集計するため、diagnosticData という巨大なJSオブジェクトは不要になりました！
+  function calcScore() {
+    let totalOriginality = 0;
+    let totalComfort = 0;
+    let totalMaterial = 0;
+    let totalDesign = 0;
+    let totalFunction = 0;
 
+    const checkedInputs = document.querySelectorAll('input[type="radio"]:checked') as NodeListOf<HTMLInputElement>;
 
-// 1. 全ての質問（Q1〜Q5）の選択肢データを1つにまとめる
-const diagnosticData = {
-  // Q1: 明かり
-  light1: { comfort: 3, material: 1 },
-  light2: { design: 3, material: 1 },
-  light3: { originality: 3, design: 1 },
-  light4: { function: 3, comfort: 1 },
+    checkedInputs.forEach((ci) => {
+      // HTMLの `data-xxx` 属性から点数を引っ張る
+      totalOriginality += Number(ci.dataset.originality) || 0;
+      totalComfort     += Number(ci.dataset.comfort) || 0;
+      totalMaterial    += Number(ci.dataset.material) || 0;
+      totalDesign      += Number(ci.dataset.design) || 0;
+      totalFunction    += Number(ci.dataset.function) || 0;
+    });
 
-  // Q2: お皿
-  dish1: { comfort: 2, material: 3 },
-  dish2: { design: 3, comfort: 1 },
-  dish3: { originality: 3, design: 1 },
-  dish4: { function: 3, comfort: 1 },
+    const finalResult = [
+      { name: "個性", score: totalOriginality },
+      { name: "居心地", score: totalComfort },
+      { name: "素材", score: totalMaterial },
+      { name: "デザイン", score: totalDesign },
+      { name: "機能性", score: totalFunction },
+    ];
 
-  // Q3: タイル
-  tile1: { material: 3, comfort: 2 },
-  tile2: { design: 3, comfort: 1 },
-  tile3: { originality: 3, design: 1 },
-  tile4: { function: 3, comfort: 1 },
+    let totalFinalResult = finalResult.reduce((sum, current) => sum + current.score, 0);
 
-  // Q4: おうちの役割
-  role1: { comfort: 3, material: 1 },
-  role2: { design: 3, comfort: 1 },
-  role3: { originality: 3, design: 1 },
-  role4: { function: 3, comfort: 1 },
-
-  // Q5: 道具をお迎えするとき
-  newTool1: { material: 3, design: 1 },
-  newTool2: { comfort: 3, material: 1 },
-  newTool3: { function: 3, comfort: 1 },
-  newTool4: { originality: 3, design: 1 }
-};
-
-let finalResult: any = [];
-
-// 2. 合算用の計算関数
-function calcScore() {
-  let totalOriginality = 0;
-  let totalComfort = 0;
-  let totalMaterial = 0;
-  let totalDesign = 0;
-  let totalFunction = 0;
-
-  // 画面内でチェックされているラジオボタンを全て取得（Q1〜Q5まとめて）
-  const checkedInputs = document.querySelectorAll('input[type="radio"]:checked');
-
-  checkedInputs.forEach((ci) => {
-    const id = ci.value; // "light1" や "dish3" などが取れる
-    const data = diagnosticData[id]; // データベースから該当する点数データを取得
-
-    if (data) {
-      // 「|| 0」を使って、データがなくてもNaNにならないように加算
-      totalOriginality += data.originality || 0;
-      totalComfort     += data.comfort || 0;
-      totalMaterial    += data.material || 0;
-      totalDesign      += data.design || 0;
-      totalFunction    += data.function || 0;
-    }
-  });
-
-  console.log(`【現在の合計】 個性:${totalOriginality}, 居心地:${totalComfort}, 素材:${totalMaterial}, デザイン:${totalDesign}, 機能性:${totalFunction}`);
-  
-  finalResult = [
-    {name:"個性", score: totalOriginality},
-    {name:"居心地", score: totalComfort},
-    {name:"素材", score: totalMaterial},
-    {name:"デザイン", score: totalDesign},
-    {name:"機能性", score: totalFunction},
-  ];
-}
-
-// 3. イベントの設定
-// ラジオボタンが切り替わるたびにリアルタイムで計算する
-const inputs = document.querySelectorAll("input[type='radio']");
-inputs.forEach((input) => {
-  input.addEventListener("change", () => {
-    calcScore();
-  });
-});
-
-// // ボタンを押したときにも計算して、画面がリロードされるのを防ぐ
-// const form = document.querySelector("form");
-// form.addEventListener("submit", (e) => {
-//   e.preventDefault();
-
-//   const checkedInputs = document.querySelectorAll('input[type="radio"]:checked');
-
-//   if(checkedInputs.length < 5){
-//     console.log("全ての質問に答えてください");
-//   }
-  
-//   // const finalResult = calcScore();
-//   console.log(finalResult);
-//   let totalFinalResult = finalResult.reduce((sum, current) => sum + current, 0);
-//   console.log(totalFinalResult);
-  
-  
-//   console.log(`診断完了！\n個性: ${finalResult[0]}点\n居心地: ${finalResult[1]}点\n素材: ${finalResult[2]}点\nデザイン: ${finalResult[3]}点\n機能性: ${finalResult[4]}点`);
-//   // alert("ok");
-
-//   console.log(
-//     `診断完了！\n
-//     個性: ${Math.floor(finalResult[0] / totalFinalResult * 100)}%\n
-//     居心地: ${Math.floor(finalResult[1] / totalFinalResult * 100)}%\n
-//     素材: ${Math.floor(finalResult[2] / totalFinalResult * 100)}%\n
-//     デザイン: ${Math.floor(finalResult[3] / totalFinalResult * 100)}%\n
-//     機能性: ${Math.floor(finalResult[4] / totalFinalResult * 100)}%`);
-  
-// });
+    console.log("【診断結果の比率】", 
+      finalResult.map(item => {
+        const ratio = totalFinalResult > 0 ? Math.floor(item.score / totalFinalResult * 100) : 0;
+        return `${item.name}: ${ratio}%`;
+      }).join("\n")
+    );
+    
+  }
 </script>
+
+
+
+
+
