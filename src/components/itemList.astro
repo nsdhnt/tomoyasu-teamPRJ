@@ -2,32 +2,15 @@
 import ItemImg from "./itemImg.astro";
 import { Image } from "astro:assets";
 import ItemThumb from "../assets/item_thumb.png";
-// import ItemIcon from "../assets/item_icon.png";
-// import mainItemView from "../assets/main_item_view.png";
 const { tabBlockName, mainItemView, itemIcon, items } = Astro.props;
 
 const initialItems = items.slice(0, 5);
 const moreItems = items.slice(5);
 const totalCount = items.length;
-
-// const initialItems = [
-//   { src: mainItemView, name: "ガレット" },
-//   { src: itemImg2, name: "トルテ" },
-//   { src: itemImg3, name: "ピュレ" },
-//   { src: itemImg4, name: "マカロン" },
-//   { src: itemImg5, name: "マジョリカ" },
-// ];
-
-// const moreItems = [
-//   { src: , name: "" },
-// ];
-
 ---
-
 
 <style lang="scss">
   .item-list{
-    // background: url("../assets/brick_background.png");
     .main-thumb{
       position: relative;
       picture{
@@ -84,9 +67,7 @@ const totalCount = items.length;
       }
     }
   }
-  
 </style>
-
 
 <div class="item-list">
   <div class="main-thumb">
@@ -96,8 +77,7 @@ const totalCount = items.length;
   <h2>{tabBlockName}</h2>
   <div class="item-imgs">
     {initialItems.map((item) => (
-      <ItemImg src={item.src} itemName={item.name}
-      />
+      <ItemImg src={item.src} itemName={item.name} />
     ))}
   </div>
   
@@ -113,7 +93,6 @@ const totalCount = items.length;
   )}  
 </div>
 
-
 <script>
   const moreBtn = document.querySelector(".more-btn");
   const moreImgs = document.querySelector(".more-imgs");
@@ -127,5 +106,4 @@ const totalCount = items.length;
       moreBtn.textContent = "close";
     }
   });
-
 </script>

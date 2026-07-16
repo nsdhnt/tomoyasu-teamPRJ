@@ -36,7 +36,7 @@ import StoryStudy from "../assets/勉強.png";
             flex-direction: column;
             align-items: center;
             margin-bottom: 300px;
-            .desertImg {
+            .desert-img {
                 &:nth-child(1) {
                     transition: 0.5s all ease-in-out;
                 }
@@ -114,10 +114,10 @@ import StoryStudy from "../assets/勉強.png";
                 height: 100%;
             }
             &:nth-child(1) {
-                animation: slideRight 8s linear infinite;
+                animation: slide-right 8s linear infinite;
             }
             &:nth-child(2) {
-                animation: slideLeft 8s linear infinite;
+                animation: slide-left 8s linear infinite;
             }
         }
     }
@@ -186,7 +186,7 @@ import StoryStudy from "../assets/勉強.png";
             }
         }
     }
-    @keyframes slideRight {
+    @keyframes slide-right {
         0% {
             transform: translateX(-100%);
         }
@@ -194,7 +194,7 @@ import StoryStudy from "../assets/勉強.png";
             transform: translateX(0);
         }
     }
-    @keyframes slideLeft {
+    @keyframes slide-left {
         0% {
             transform: translateX(0);
         }
@@ -206,13 +206,13 @@ import StoryStudy from "../assets/勉強.png";
 <div class="story-wrap" id="story">
     <h1 class="story-title">Story</h1>
     <div class="story-content">
-        <Image src={Desert1} alt="白皿にワッフル" class="desertImg desert1" />
+        <Image src={Desert1} alt="白皿にワッフル" class="desert-img desert1" />
         <Image
             src={Desert2}
             alt="黒皿にいちごチョコケーキ"
-            class="desertImg desert2"
+            class="desert-img desert2"
         />
-        <Image src={Food1} alt="黒皿ご飯料理" class="desertImg food1" />
+        <Image src={Food1} alt="黒皿ご飯料理" class="desert-img food1" />
         <h2 class="inner-title">世界中の人々の人生に彩りを</h2>
         <p class="story-info">
             家具を置いた先の暮らしを想像<br />
@@ -284,9 +284,6 @@ import StoryStudy from "../assets/勉強.png";
     const desert1 = document.querySelector(".desert1");
     const desert2 = document.querySelector(".desert2");
     const food1 = document.querySelector(".food1");
-    const storyImages = document.querySelector(".story-images");
-    const images1 = document.querySelectorAll(".images1");
-    const images2 = document.querySelectorAll(".images2");
 
     function imagesScroll() {
         if (window.scrollY >= 500) {
@@ -302,6 +299,4 @@ import StoryStudy from "../assets/勉強.png";
 
     window.addEventListener("scroll", imagesScroll);
     imagesScroll();
-
-    // images1.forEach(())
 </script>

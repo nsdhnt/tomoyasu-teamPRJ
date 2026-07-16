@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-
 <style lang="scss">
   nav{
     width: 393px;
@@ -45,8 +44,6 @@ import Layout from "../layouts/Layout.astro";
 <script is:inline>
   const tabBtns = document.querySelectorAll(".tab-btn");
   tabBtns.forEach((tabBtn)=>{
-    // tabBtn.classList.remove("active");
-    // tabBtns[0].classList.add("active");
     tabBtn.addEventListener("click", ()=>{
       tabBtns.forEach(btn => btn.classList.remove("active"));
       tabBtn.classList.add("active");

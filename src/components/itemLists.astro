@@ -34,7 +34,6 @@ const tileItems = [
 ];
 ---
 
-
 <style lang="scss">
   .item-lists{
     width: 393px;
@@ -80,7 +79,6 @@ const tileItems = [
   window.addEventListener("toggle-items", (e)=>{
     // navで押したタブ名を取得
     const tabNameClass = e.detail.tabName;
-    // console.log(tabNameClass);
     const itemLists = document.querySelectorAll(".item-lists > div");
     itemLists.forEach((itemList)=>{
       // 各商品一覧のactiveを削除
@@ -93,5 +91,3 @@ const tileItems = [
     });
   });
 </script>
-
-
