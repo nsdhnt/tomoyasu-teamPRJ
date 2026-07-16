@@ -73,7 +73,7 @@ const totalSteps = questions.length;
 
 <style lang="scss">
   // （既存のスタイルをそのまま引き継ぎます）
-  .test{
+  .diagnosis{
     width: 100%;
     max-width: 393px;
     margin: 0 auto;
@@ -206,14 +206,14 @@ const totalSteps = questions.length;
         }
       }
     }
-    .testItemList{
+    .diagnosisItemList{
       padding: 64px 0;
       display: flex;
       flex-direction: column;
       gap: 64px;
       a{
         color: black;
-        .testItemWrap{
+        .diagnosisItemWrap{
           position: relative;
           padding: 0 14px;
           height: 124px;
@@ -221,7 +221,7 @@ const totalSteps = questions.length;
           &:hover{
             transform: translateY(-5px);
           }
-          .testItemImg{
+          .diagnosisItemImg{
             position: absolute;
             width: 122px;
             height: 122px;
@@ -230,7 +230,7 @@ const totalSteps = questions.length;
             border: solid 1px black;
             z-index: 10;
           }
-          .testItemText{
+          .diagnosisItemText{
             position: absolute;
             top: 7px;
             right: 20px;
@@ -281,7 +281,7 @@ const totalSteps = questions.length;
     const isLast = index === questions.length - 1;
     return (
       <div 
-        class={`test t${q.step} ${isFirst ? '' : 'hidden'}`} 
+        class={`diagnosis t${q.step} ${isFirst ? '' : 'hidden'}`} 
         data-step={q.step}
       >
         <h2>{q.title}</h2>
@@ -333,25 +333,25 @@ const totalSteps = questions.length;
       <p>機能性 重視</p>
       <p>な考え方です</p>
     </div>
-    <div class="testItemList">
+    <div class="diagnosisItemList">
       <a href="#">
-        <div class="testItemWrap">
-          <div class="testItemImg">
+        <div class="diagnosisItemWrap">
+          <div class="diagnosisItemImg">
             <Image src={testItemImg} alt="" />
           </div>
-          <div class="testItemText">
+          <div class="diagnosisItemText">
             <p>moku</p>
             <p>商品<br>説明</p>
             <Image src={testItemArrow} alt="" />
           </div>
         </div>
       </a>
-      <a href="">
-        <div class="testItemWrap">
-          <div class="testItemImg">
+      <a href="#">
+        <div class="diagnosisItemWrap">
+          <div class="diagnosisItemImg">
             <Image src={testItemImg} alt="" />
           </div>
-          <div class="testItemText">
+          <div class="diagnosisItemText">
             <p>moku</p>
             <p>商品<br>説明</p>
             <Image src={testItemArrow} alt="" />
@@ -371,11 +371,11 @@ const totalSteps = questions.length;
 <script>
   let count = 1;
   // 質問数
-  const totalQuestions = document.querySelectorAll(".test").length;
+  const totalQuestions = document.querySelectorAll(".diagnosis").length;
 
   // 表示の切り替え処理
   function switchDisplay(targetCount: number) {
-    const tests = document.querySelectorAll(".test");
+    const tests = document.querySelectorAll(".diagnosis");
     const result = document.querySelector(".result");
 
     // 全ての質問と結果を一旦非表示
