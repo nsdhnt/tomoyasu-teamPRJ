@@ -1,0 +1,165 @@
+---
+import { Image } from "astro:assets";
+import Desert1 from "../assets/desert1.png";
+import Desert2 from "../assets/desert2.png";
+import Food1 from "../assets/food1.png";
+import Images1 from "../assets/story-images1.png";
+import Images2 from "../assets/story-images2.png";
+---
+
+<style>
+    .story-wrap {
+        position: relative;
+        padding-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        .story-title {
+            font-size: 3.6rem;
+            color: #000;
+            margin-bottom: 4rem;
+        }
+        .story-content {
+            display: flex;
+            position: relative;
+            padding-top: 110px;
+            height: 510px;
+            background-image: url(../assets/story-background.png);
+            background-size: 100%;
+            width: 100%;
+            background-position: center center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .desertImg {
+                &:nth-child(1) {
+                    transition: 0.5s all ease-in-out;
+                }
+                &:nth-child(2) {
+                    transition: 0.6s all ease-in-out;
+                }
+            }
+            .desert1 {
+                transition: 0.3 all ease-in-out;
+                position: absolute;
+                top: -23%;
+                left: -60%;
+                width: 60%;
+                height: 60%;
+            }
+            .desert2 {
+                position: absolute;
+                top: 28%;
+                right: -37%;
+                width: 40%;
+                height: 35%;
+                transform: rotate(98deg);
+            }
+
+            .food1 {
+                position: absolute;
+                left: -52%;
+                bottom: -15%;
+                width: 60%;
+                height: 60%;
+                transition: 0.7s all ease-in-out;
+            }
+            .inner-title {
+                font-size: 2rem;
+                border-bottom: 1px solid #fff;
+                margin-bottom: 3rem;
+                color: #fff;
+            }
+            .story-info {
+                font-size: 1.5rem;
+                color: #fff;
+                text-align: center;
+                font-weight: lighter;
+                line-height: 2.5rem;
+            }
+        }
+        .move-images {
+            position: absolute;
+            z-index: 10;
+            bottom: -40%;
+            display: flex;
+            background-color: rgba(255, 246, 185, 0.4);
+            flex-direction: column;
+            gap: 24px;
+            .story-images {
+                display: flex;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        .story-content {
+            .show-desert1 {
+                transform: translateX(150px);
+            }
+            .show-desert2 {
+                transform: translateX(-90px) rotate(98deg);
+            }
+            .show-food1 {
+                transform: translateX(90px);
+            }
+        }
+    }
+</style>
+<div class="story-wrap">
+    <h1 class="story-title">Story</h1>
+    <div class="story-content">
+        <Image src={Desert1} alt="白皿にワッフル" class="desertImg desert1" />
+        <Image
+            src={Desert2}
+            alt="黒皿にいちごチョコケーキ"
+            class="desertImg desert2"
+        />
+        <Image src={Food1} alt="黒皿ご飯料理" class="desertImg food1" />
+        <h2 class="inner-title">世界中の人々の人生に彩りを</h2>
+        <p class="story-info">
+            家具を置いた先の暮らしを想像<br />
+            しながら、自分らしいくつろぎ<br />
+            の空間を見つけていく。<br />
+            ただ家具を選ぶのではなく、<br />
+            その家具と過ごす時間や、部屋<br />
+            に生まれる心地よさまで思い描<br />
+            くことで、暮らしに寄り添う空<br />
+            間づくりを楽しんでいただけます。
+        </p>
+    </div>
+    <div class="move-images">
+        <div class="story-images">
+            <Image src={Images1} alt="上部屋イメージ" class="images1" />
+            <Image src={Images1} alt="上部屋イメージ" class="images1" />
+        </div>
+        <div class="story-images">
+            <Image src={Images2} alt="下部屋イメージ" class="images2" />
+            <Image src={Images2} alt="下部屋イメージ" class="images2" />
+        </div>
+    </div>
+</div>
+<script>
+    const desert1 = document.querySelector(".desert1");
+    const desert2 = document.querySelector(".desert2");
+    const food1 = document.querySelector(".food1");
+    const images1 = document.querySelector(".images1");
+    const images2 = document.querySelector(".images2");
+
+    function imagesScroll() {
+        if (window.scrollY >= 400) {
+            desert1?.classList.add("show-desert1");
+            desert2?.classList.add("show-desert2");
+            food1?.classList.add("show-food1");
+        } else {
+            desert1?.classList.remove("show-desert1");
+            desert2?.classList.remove("show-desert2");
+            food1?.classList.remove("show-food1");
+        }
+    }
+
+    window.addEventListener("scroll", imagesScroll);
+    imagesScroll();
+</script>

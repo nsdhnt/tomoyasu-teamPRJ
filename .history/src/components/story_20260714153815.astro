@@ -5,9 +5,6 @@ import Desert2 from "../assets/desert2.png";
 import Food1 from "../assets/food1.png";
 import Images1 from "../assets/story-images1.png";
 import Images2 from "../assets/story-images2.png";
-import StoryEat from "../assets/食事2.png";
-import StoryTile from "../assets/タイル.png";
-import StoryStudy from "../assets/勉強.png";
 ---
 
 <style>
@@ -18,6 +15,7 @@ import StoryStudy from "../assets/勉強.png";
         flex-direction: column;
         align-items: center;
         overflow: visible;
+        margin-bottom: 224px;
         .story-title {
             font-size: 3.6rem;
             color: #000;
@@ -26,16 +24,15 @@ import StoryStudy from "../assets/勉強.png";
         .story-content {
             display: flex;
             position: relative;
-            z-index: 10;
             padding-top: 110px;
-            width: 100%;
             height: 510px;
             background-image: url(../assets/story-background.png);
             background-size: 100%;
+            width: 100%;
+            /* overflow: hidden; */
             background-position: center center;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 300px;
             .desertImg {
                 &:nth-child(1) {
                     transition: 0.5s all ease-in-out;
@@ -97,109 +94,20 @@ import StoryStudy from "../assets/勉強.png";
     }
     .move-images {
         position: absolute;
-        padding: 40px 0;
-        top: 34%;
+        z-index: -10;
+        bottom: -30%;
         display: flex;
         background-color: rgba(255, 246, 185, 0.4);
         flex-direction: column;
         gap: 24px;
-
         .story-images {
             display: flex;
             position: relative;
             z-index: 5;
             img {
-                position: relative;
                 width: 100%;
                 height: 100%;
             }
-            &:nth-child(1) {
-                animation: slideRight 8s linear infinite;
-            }
-            &:nth-child(2) {
-                animation: slideLeft 8s linear infinite;
-            }
-        }
-    }
-    .story-info {
-        display: flex;
-        flex-direction: column;
-        gap: 100px;
-        .first {
-            background-image: url(../assets/cloud1.png);
-            background-size: contain;
-            background-position: right;
-        }
-        .second {
-            background-image: url(../assets/cloud2.png);
-            background-size: contain;
-            .story-img {
-                margin-right: 0;
-                padding-right: 0;
-            }
-        }
-        .third {
-            background-image: url(../assets/cloud3.png);
-            background-size: contain;
-            background-position: right;
-        }
-        .info-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            .story-img {
-                width: 45%;
-                height: 45%;
-            }
-            .story-text-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                .title {
-                    font-size: 1.5rem;
-                    margin-bottom: 10px;
-                }
-                p {
-                    font-size: 1.2rem;
-                }
-            }
-            .story-first-content {
-                width: 100%;
-                height: 100%;
-                margin-right: 20px;
-                .title {
-                    border-bottom: 6px #d0e8e6 double;
-                }
-            }
-            .story-second-content {
-                margin-left: 30px;
-                .title {
-                    border-bottom: 6px #e5f5ff double;
-                }
-            }
-            .story-third-content {
-                margin-right: 10px;
-                .title {
-                    border-bottom: 6px #fff7cc double;
-                }
-            }
-        }
-    }
-    @keyframes slideRight {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(0);
-        }
-    }
-    @keyframes slideLeft {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-100%);
         }
     }
 </style>
@@ -235,58 +143,13 @@ import StoryStudy from "../assets/勉強.png";
             <Image src={Images2} alt="下部屋イメージ" class="images2" />
         </div>
     </div>
-    <div class="story-info">
-        <div class="info-inner first">
-            <Image
-                src={StoryEat}
-                alt="食べてるイラスト"
-                class="eat story-img"
-            />
-            <div class="story-first-content story-text-content">
-                <h2 class="title">一日の始まりを、心地よく。</h2>
-                <p>
-                    お気に入りの食器が、<br />
-                    いつもの朝を少し特別な時間へ。
-                </p>
-            </div>
-        </div>
-        <div class="info-inner second">
-            <div class="story-second-content story-text-content">
-                <h2 class="title">暮らしに、小さな彩りを</h2>
-                <p>
-                    素材への表情が、何気ない空間に<br />
-                    心地よいアクセントを添えます
-                </p>
-            </div>
-            <Image
-                src={StoryTile}
-                alt="タイルもってるイラスト"
-                class="tile story-img"
-            />
-        </div>
-        <div class="info-inner third">
-            <Image
-                src={StoryStudy}
-                alt="勉強してるイラスト"
-                class="eat story-img"
-            />
-            <div class="story-third-content story-text-content">
-                <h2 class="title">心ほどける、夜のひととき。</h2>
-                <p>
-                    やさしい灯りが、何気ない夜を心<br />
-                    満たされる時間へと変えてくれます。
-                </p>
-            </div>
-        </div>
-    </div>
 </div>
 <script>
     const desert1 = document.querySelector(".desert1");
     const desert2 = document.querySelector(".desert2");
     const food1 = document.querySelector(".food1");
-    const storyImages = document.querySelector(".story-images");
-    const images1 = document.querySelectorAll(".images1");
-    const images2 = document.querySelectorAll(".images2");
+    const images1 = document.querySelector(".images1");
+    const images2 = document.querySelector(".images2");
 
     function imagesScroll() {
         if (window.scrollY >= 500) {
@@ -303,5 +166,15 @@ import StoryStudy from "../assets/勉強.png";
     window.addEventListener("scroll", imagesScroll);
     imagesScroll();
 
-    // images1.forEach(())
+    images1?.animate(
+        [
+            { transform: "translateX(-100px)", opacity: 0 },
+            { transform: "translateX(0)", opacity: 1 },
+        ],
+        {
+            duration: 1000,
+            easing: "ease-out",
+            fill: "forwards",
+        },
+    );
 </script>
