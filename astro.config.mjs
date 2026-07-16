@@ -5,6 +5,10 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   devToolbar: {
     enabled: false
-  }, 
-  base: '/tomoyasu-teamPRJ/' 
+  },
+  base: '/tomoyasu-teamPRJ/',
+  
+  build: {
+    assets: 'assets'
+  }
 });
