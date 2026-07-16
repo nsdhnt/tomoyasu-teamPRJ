@@ -1,10 +1,10 @@
 ---
 import MainImgSlide from "./mainImgSlide.astro";
 import { Image } from "astro:assets";
-import mainImgDrinking from "../assets/mainImgDrinking.png";
-import mainImgEating from "../assets/mainImgEating.png";
-import mainImgPasting from "../assets/mainImgPasting.png";
-import explore from "../assets/explore.png";
+import mainImgDrinking from "../assets/main-img-drinking.png";
+import mainImgEating from "../assets/main-img-eating.png";
+import mainImgPasting from "../assets/main-img-pasting.png";
+import exploreArrow from "../assets/explore-arrow.png";
 ---
 
 <style lang="scss">
@@ -24,22 +24,18 @@ import explore from "../assets/explore.png";
     width: 393px;
     margin-inline: auto;
     background-repeat: repeat-y;
-    .mainImgWrap {
+    .main-img-wrap {
       padding: 96px 0;
       overflow-x: hidden;
       overflow: scroll;
       display: flex;
       position: relative;
-      // border: solid 1px tomato;
       &::-webkit-scrollbar {
         display: none;
       }
-      .mainImg {
+      .main-img {
         display: flex;
         animation: slideWindow 15s ease-in-out infinite;
-        img {
-          // border: solid 1px black;
-        }
       }
     }
     .explore {
@@ -59,7 +55,7 @@ import explore from "../assets/explore.png";
         width: 22px;
       }
     }
-    .modalWindow {
+    .modal-window {
       &.hidden {
         display: none;
       }
@@ -69,8 +65,8 @@ import explore from "../assets/explore.png";
 
 <main id="top">
   <div class="main">
-    <div class="mainImgWrap">
-      <ul class="mainImg">
+    <div class="main-img-wrap">
+      <ul class="main-img">
         <MainImgSlide src={mainImgDrinking} />
         <MainImgSlide src={mainImgEating} />
         <MainImgSlide src={mainImgPasting} />
@@ -79,7 +75,7 @@ import explore from "../assets/explore.png";
     <div class="explore">
       <p>colors Taiwan</p>
       <p>explore</p>
-      <Image src={explore} alt="" />
+      <Image src={exploreArrow} alt="" />
     </div>
   </div>
 </main>

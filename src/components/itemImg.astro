@@ -5,8 +5,6 @@ import ItemIcon from "../assets/item_icon.png";
 const { src, itemName } = Astro.props;
 ---
 
-
-
 <style lang="scss">
   .item-img {
     picture {
@@ -16,8 +14,6 @@ const { src, itemName } = Astro.props;
       background-color: #fff;
       border-radius: 17px;
       img {
-        // width: 147px;
-        // height: auto;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -41,4 +37,3 @@ const { src, itemName } = Astro.props;
   <picture><Image src={src} alt="" /></picture>
   <p>{itemName}</p>
 </div>
-

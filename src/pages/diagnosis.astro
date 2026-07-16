@@ -4,8 +4,8 @@ import Graph from "../components/graph.astro";
 import { Image } from "astro:assets";
 import testItemImg from "../assets/testItemImg.png";
 import testItemArrow from "../assets/testItemArrow.png";
-import recommendFunction from "../assets/recommendFunction.png";
-import returnButton from "../assets/return_button.png";
+import recommendFunction from "../assets/recommend-function.png";
+import returnButton from "../assets/return-button.png";
 
 
 // 質問＆回答データ
@@ -57,22 +57,20 @@ const questions = [
   {
     step: 5,
     title: "暮らしの道具（家具や雑貨）を新しくお迎えするとき、一番心が動く瞬間は？",
-    name: "newTool",
+    name: "new-tool",
     answers: [
-      { id: "newTool1", text: "使い込むほどに味が出る表情を見たとき", score: { material: 3, design: 1 } },
-      { id: "newTool2", text: "包み込まれるような安心感を感じたとき", score: { comfort: 3, material: 1 } },
-      { id: "newTool3", text: "暮らしが便利になると確信したとき", score: { function: 3, comfort: 1 } },
-      { id: "newTool4", text: "運命を感じたとき", score: { originality: 3, design: 1 } },
+      { id: "new-tool1", text: "使い込むほどに味が出る表情を見たとき", score: { material: 3, design: 1 } },
+      { id: "new-tool2", text: "包み込まれるような安心感を感じたとき", score: { comfort: 3, material: 1 } },
+      { id: "new-tool3", text: "暮らしが便利になると確信したとき", score: { function: 3, comfort: 1 } },
+      { id: "new-tool4", text: "運命を感じたとき", score: { originality: 3, design: 1 } },
     ]
   }
 ];
 
-// 全質問数（STEPの最大値に自動的に代入されます）
 const totalSteps = questions.length;
 ---
 
 <style lang="scss">
-  // （既存のスタイルをそのまま引き継ぎます）
   .diagnosis{
     width: 100%;
     max-width: 393px;
@@ -128,18 +126,18 @@ const totalSteps = questions.length;
         }
       }
     }
-    .stepNum{
+    .step-num{
       font-size: 20px;
       width: 90px;
       height: 29px;
       margin-top: 27px;
       margin-bottom: 47px;
     }
-    .buttonWrap{
+    .button-wrap{
       display: flex;
       align-items: center;
       gap: 60px;
-      .returnButton{
+      .return-button{
         width: 44px;
         height: 44px;
         background-color: #D9D9D9;
@@ -158,7 +156,7 @@ const totalSteps = questions.length;
           box-shadow: 0 0 0 rgba(0, 0, 0, 0.18);
         }
       }
-      .nextButton, .judgeButton {
+      .next-button, .judge-button {
         font-size: 20px;
         width: 222px;
         height: 58px;
@@ -196,7 +194,7 @@ const totalSteps = questions.length;
         &:nth-child(2){
           font-size: 36px;
           justify-content: center;
-          background: url("../assets/test-line-function.png");
+          background: url("../assets/diagnosis-line-function.png");
           background-repeat: no-repeat;
           background-position: center bottom;
         }
@@ -206,14 +204,14 @@ const totalSteps = questions.length;
         }
       }
     }
-    .diagnosisItemList{
+    .diagnosis-item-list{
       padding: 64px 0;
       display: flex;
       flex-direction: column;
       gap: 64px;
       a{
         color: black;
-        .diagnosisItemWrap{
+        .diagnosis-item-wrap{
           position: relative;
           padding: 0 14px;
           height: 124px;
@@ -221,7 +219,7 @@ const totalSteps = questions.length;
           &:hover{
             transform: translateY(-5px);
           }
-          .diagnosisItemImg{
+          .diagnosis-item-img{
             position: absolute;
             width: 122px;
             height: 122px;
@@ -230,7 +228,7 @@ const totalSteps = questions.length;
             border: solid 1px black;
             z-index: 10;
           }
-          .diagnosisItemText{
+          .diagnosis-item-text{
             position: absolute;
             top: 7px;
             right: 20px;
@@ -304,19 +302,18 @@ const totalSteps = questions.length;
             </li>
           ))}
         </ul>
-        <p class="stepNum">STEP{q.step}/{totalSteps}</p>
-        <div class="buttonWrap">
+        <p class="step-num">STEP{q.step}/{totalSteps}</p>
+        <div class="button-wrap">
           {!isFirst && (
-            <button class="returnButton" type="button">
+            <button class="return-button" type="button">
               <Image src={returnButton} alt="戻る" />
             </button>
           )}
           
-          {/* 最後の質問なら「診断する」、途中なら「次へ」を表示 */}
           {isLast ? (
-            <button class="judgeButton" type="button">診断する</button>
+            <button class="judge-button" type="button">診断する</button>
           ) : (
-            <button class="nextButton" type="button">次へ</button>
+            <button class="next-button" type="button">次へ</button>
           )}
         </div>
       </div>
@@ -333,13 +330,13 @@ const totalSteps = questions.length;
       <p>機能性 重視</p>
       <p>な考え方です</p>
     </div>
-    <div class="diagnosisItemList">
+    <div class="diagnosis-item-list">
       <a href="#">
-        <div class="diagnosisItemWrap">
-          <div class="diagnosisItemImg">
+        <div class="diagnosis-item-wrap">
+          <div class="diagnosis-item-img">
             <Image src={testItemImg} alt="" />
           </div>
-          <div class="diagnosisItemText">
+          <div class="diagnosis-item-text">
             <p>moku</p>
             <p>商品<br>説明</p>
             <Image src={testItemArrow} alt="" />
@@ -347,11 +344,11 @@ const totalSteps = questions.length;
         </div>
       </a>
       <a href="#">
-        <div class="diagnosisItemWrap">
-          <div class="diagnosisItemImg">
+        <div class="diagnosis-item-wrap">
+          <div class="diagnosis-item-img">
             <Image src={testItemImg} alt="" />
           </div>
-          <div class="diagnosisItemText">
+          <div class="diagnosis-item-text">
             <p>moku</p>
             <p>商品<br>説明</p>
             <Image src={testItemArrow} alt="" />
@@ -370,30 +367,24 @@ const totalSteps = questions.length;
 
 <script>
   let count = 1;
-  // 質問数
   const totalQuestions = document.querySelectorAll(".diagnosis").length;
 
-  // 表示の切り替え処理
   function switchDisplay(targetCount: number) {
     const tests = document.querySelectorAll(".diagnosis");
     const result = document.querySelector(".result");
 
-    // 全ての質問と結果を一旦非表示
     tests.forEach((t) => t.classList.add("hidden"));
     result?.classList.add("hidden");
 
     if (targetCount <= totalQuestions) {
-      // 途中の質問画面を表示
       const nextTest = document.querySelector(`.t${targetCount}`);
       nextTest?.classList.remove("hidden");
     } else {
-      // 結果画面の表示
       result?.classList.remove("hidden");
       calcScore();
     }
   }
 
-  // 「戻る」処理
   function returnDisplayQuiz() {
     if (count > 1) {
       count--;
@@ -401,28 +392,23 @@ const totalSteps = questions.length;
     }
   }
 
-  // 「次へ」処理
   function nextDisplayQuiz() {
     count++;
     switchDisplay(count);
   }
 
-  // ラジオボタン選択時
   const answerLists = document.querySelectorAll(".answer");
   answerLists.forEach((list) => {
     const inputs = list.querySelectorAll('input[type="radio"]');
     inputs.forEach((input) => {
       input.addEventListener("change", () => {
-        // 同じ質問グループの全選択肢から select クラスを削除
         list.querySelectorAll("li").forEach((li) => li.classList.remove("select"));
-        // 現在選択されたラジオボタンの親要素(li)に select を追加
         input.closest("li")?.classList.add("select");
       });
     });
   });
 
-  // 戻るボタンの設定
-  const returnButtons = document.querySelectorAll(".returnButton");
+  const returnButtons = document.querySelectorAll(".return-button");
   returnButtons.forEach((returnButton) => {
     returnButton.addEventListener("click", () => {
       returnButton.classList.add("active");
@@ -433,11 +419,9 @@ const totalSteps = questions.length;
     });
   });
 
-  // 次へボタンの設定
-  const nextButtons = document.querySelectorAll(".nextButton");
+  const nextButtons = document.querySelectorAll(".next-button");
   nextButtons.forEach((nextButton) => {
     nextButton.addEventListener("click", () => {
-      // 現在の質問でラジオボタンが選択されているか確認
       const currentTest = document.querySelector(`.t${count}`);
       const checked = currentTest?.querySelector('input[type="radio"]:checked');
 
@@ -454,8 +438,7 @@ const totalSteps = questions.length;
     });
   });
 
-  // 診断するボタンの設定
-  const judgeButton = document.querySelector(".judgeButton");
+  const judgeButton = document.querySelector(".judge-button");
   judgeButton?.addEventListener("click", () => {
     const currentTest = document.querySelector(`.t${count}`);
     const checked = currentTest?.querySelector('input[type="radio"]:checked');
@@ -472,8 +455,6 @@ const totalSteps = questions.length;
     }, 200);
   });
 
-  // 💡 5. 合算用の計算関数
-  // HTML要素に埋め込んだ score データを自動で集計するため、diagnosticData という巨大なJSオブジェクトは不要になりました！
   function calcScore() {
     let totalOriginality = 0;
     let totalComfort = 0;
@@ -484,35 +465,11 @@ const totalSteps = questions.length;
     const checkedInputs = document.querySelectorAll('input[type="radio"]:checked') as NodeListOf<HTMLInputElement>;
 
     checkedInputs.forEach((ci) => {
-      // HTMLの `data-xxx` 属性から点数を引っ張る
       totalOriginality += Number(ci.dataset.originality) || 0;
       totalComfort     += Number(ci.dataset.comfort) || 0;
       totalMaterial    += Number(ci.dataset.material) || 0;
       totalDesign      += Number(ci.dataset.design) || 0;
       totalFunction    += Number(ci.dataset.function) || 0;
     });
-
-    const finalResult = [
-      { name: "個性", score: totalOriginality },
-      { name: "居心地", score: totalComfort },
-      { name: "素材", score: totalMaterial },
-      { name: "デザイン", score: totalDesign },
-      { name: "機能性", score: totalFunction },
-    ];
-
-    let totalFinalResult = finalResult.reduce((sum, current) => sum + current.score, 0);
-
-    console.log("【診断結果の比率】", 
-      finalResult.map(item => {
-        const ratio = totalFinalResult > 0 ? Math.floor(item.score / totalFinalResult * 100) : 0;
-        return `${item.name}: ${ratio}%`;
-      }).join("\n")
-    );
-    
   }
 </script>
-
-
-
-
-

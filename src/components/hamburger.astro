@@ -1,11 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import Logo from "../assets/logo.png";
-import ShopBtn from "../assets/shopBtn.png";
 ---
 
 <style>
-    .hamburgerWrap {
+    .hamburger-wrap {
         height: 80px;
         background-image: linear-gradient(
             to bottom,
@@ -14,7 +13,7 @@ import ShopBtn from "../assets/shopBtn.png";
             );
             position: relative;
         }
-        .hamburgerWrap {
+        .hamburger-wrap {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -108,7 +107,7 @@ import ShopBtn from "../assets/shopBtn.png";
         }
     </style>
     
-    <div class="hamburgerWrap">
+    <div class="hamburger-wrap">
         <button type="button" class="hamburger">
             <span></span>
         </button>

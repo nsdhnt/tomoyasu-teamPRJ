@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import modalButton from "../assets/modalButton.png";
-import leftWindow from "../assets/leftWindow.png";
-import rightWindow from "../assets/rightWindow.png";
+import modalButton from "../assets/modal-button.png";
+import leftWindow from "../assets/main-left-window.png";
+import rightWindow from "../assets/main-right-window.png";
 const { src } = Astro.props;
 ---
 
@@ -26,7 +26,7 @@ const { src } = Astro.props;
         display: block;
       }
 
-      .modalButton {
+      .modal-button {
         position: absolute;
         top: 146px;
         left: 172px;
@@ -52,7 +52,7 @@ const { src } = Astro.props;
         }
       }
 
-      .windowWrap {
+      .window-wrap {
         position: absolute;
         top: 20px;
         left: 10px;
@@ -89,7 +89,7 @@ const { src } = Astro.props;
     }
   }
 
-  .modalWindow{
+  .modal-window{
     position: absolute;
     top: 0;
     left: 0;
@@ -104,11 +104,11 @@ const { src } = Astro.props;
   <picture>
     <Image src={src} alt="" />
     
-    <div class="modalButton">
+    <div class="modal-button">
       <Image src={modalButton} alt="" />
     </div>
     
-    <div class="windowWrap">
+    <div class="window-wrap">
       <Image src={leftWindow} alt="" />
       <Image src={rightWindow} alt="" />
     </div>
@@ -118,16 +118,16 @@ const { src } = Astro.props;
 
 <script>
   document.querySelectorAll("li").forEach((li) => {
-    const windowWrap = li.querySelector(".windowWrap");
-    const modalButtton = li.querySelector(".modalButton");
+    const windowWrap = li.querySelector(".window-wrap");
+    const modalButton = li.querySelector(".modal-button");
 
     li.addEventListener("click", ()=>{
       windowWrap?.classList.toggle("open");
-      modalButtton?.classList.toggle("open");
+      modalButton?.classList.toggle("open");
     });
   });
 
-  const modalButton = document.querySelector(".modalButton");
+  const modalButton = document.querySelector(".modal-button");
   const overlay = document.querySelector(".overlay");
   modalButton?.addEventListener("click", ()=>{
     overlay?.classList.remove("hidden");

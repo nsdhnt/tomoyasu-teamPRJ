@@ -1,15 +1,14 @@
 ---
 import { Image } from "astro:assets";
-import testLink from "../assets/test_link.png";
+import diagnosisLink from "../assets/diagnosis-link.png";
 ---
 
 <style lang="scss">
-  .diagnosisLinkWrap{
+  .diagnosis-link-wrap{
     width: 393px;
     height: 408px;
     margin: 0 auto;
     position: relative;
-    // border: solid 1px tomato;
     picture{
       position: absolute;
       top: 0;
@@ -25,7 +24,6 @@ import testLink from "../assets/test_link.png";
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      // border: solid 1px tomato;
       h2{
         font-size: 48px;
       }
@@ -50,15 +48,15 @@ import testLink from "../assets/test_link.png";
   }
 </style>
 
-<div class="diagnosisLinkWrap" id="diagnosis">
+<div class="diagnosis-link-wrap" id="diagnosis">
   <picture>
-    <Image src={testLink} alt="" />
+    <Image src={diagnosisLink} alt="" />
   </picture>
   <section>
     <h2>診断</h2>
     <p>あなたに合った<br>商品を提案します</p>
-    <p class="linkButton">
-      <a href="/diagnosis/">診断する</a>
+    <p class="link-button">
+      <a href="diagnosis/">診断する</a>
     </p>
   </section>
 </div>

@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import thumbMoku1 from "../assets/thumb_moku1.png";
-import thumbMoku2 from "../assets/thumb_moku2.png";
-import thumbMoku3 from "../assets/thumb_moku3.png";
-import thumbMoku4 from "../assets/thumb_moku4.png";
+import thumbMoku1 from "../assets/thumb-moku1.png";
+import thumbMoku2 from "../assets/thumb-moku2.png";
+import thumbMoku3 from "../assets/thumb-moku3.png";
+import thumbMoku4 from "../assets/thumb-moku4.png";
 
 const selectThumbData = [
   { src: thumbMoku1, alt: "Moku1" },
@@ -26,10 +26,8 @@ const selectThumbData = [
     transition: 1s;
     &.hidden{
       display: none;
-      // opacity: 0;
-      // z-index: 0;
     }
-    .windowCard{
+    .window-card{
       width: 320px;
       height: 586px;
       background-color: #fff;
@@ -38,20 +36,17 @@ const selectThumbData = [
       display: flex;
       flex-direction: column;
       align-items: center;
-      // justify-content: center;
-      .thumbWrap{
-        // border: solid 1px black;
+      .thumb-wrap{
         .thumbnail{
           img{
             width: 240px;
             height: 240px;
           }
         }
-        .selectThumb{
+        .select-thumb{
           padding: 16px 0;
           display: flex;
           gap: 10px;
-          // border: solid 1px tomato;
           picture{
             img{
               width: 45px;
@@ -63,10 +58,9 @@ const selectThumbData = [
           }
         }
       }
-      .itemInfo{
+      .item-info{
         width: 100%;
         padding: 0 28px;
-        // border: solid 1px tomato;
         p{
           &:first-child{
             font-size: 24px;
@@ -81,17 +75,14 @@ const selectThumbData = [
 </style>
 
 <div class="overlay hidden">
-  <div class="windowCard">
-    <div class="thumbWrap">
+  <div class="window-card">
+    <div class="thumb-wrap">
       {
         <picture class="thumbnail">
           <Image src={thumbMoku1} alt="moku" />
         </picture>
       }
-      <!-- <picture class="thumbnail">
-        <Image src={thumbMoku1} alt="moku" />
-      </picture> -->
-      <div class="selectThumb">
+      <div class="select-thumb">
         {selectThumbData.map((thumb)=>(
           <picture>
             <Image src={thumb.src} alt={thumb.alt} />
@@ -99,7 +90,7 @@ const selectThumbData = [
         ))}
       </div>
     </div>
-    <div class="itemInfo">
+    <div class="item-info">
       <p>moku</p>
       <p>4,000</p>
     </div>
@@ -108,8 +99,7 @@ const selectThumbData = [
 
 
 <script>
-  // const thumbnail = document.querySelector(".thumbnail img");
-  const selectThumbs = document.querySelectorAll(".selectThumb picture img");
+  const selectThumbs = document.querySelectorAll(".select-thumb picture img");
   selectThumbs[0].classList.add("active");
   selectThumbs.forEach((selectThumb) => {
     selectThumb.addEventListener("click", ()=>{
@@ -118,14 +108,13 @@ const selectThumbData = [
       })
       selectThumb.classList.add("active");
       const active = document.querySelector(".active");
-      console.log(active.alt);
+      console.log((active as HTMLImageElement).alt);
     });
   });
 
   const overlay = document.querySelector(".overlay");
-  const windowCard = document.querySelector(".windowCard");
+  const windowCard = document.querySelector(".window-card");
   overlay?.addEventListener("click", (event)=>{
-    // console.log(event.target);
     if(event.target === overlay){
       console.log("ok");
       overlay.classList.add("hidden");
