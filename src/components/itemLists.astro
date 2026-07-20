@@ -1,11 +1,12 @@
 ---
 import ItemList from "./itemList.astro";
 import { Image } from "astro:assets";
-import ItemThumb from "../assets/item_thumb.png";
-import tileIcon from "../assets/item_icon.png";
-import mainTileView from "../assets/main_item_view.png";
 
 // 画像のインポート
+// タイル
+import tileIcon from "../assets/tile-icon.png";
+import tileThumb from "../assets/tile-thumb.png";
+
 import tileKonpeitou from "../assets/tile-konpeitou.jpg";
 import tileFran from "../assets/tile-fran.jpg";
 import tileHarucaratto from "../assets/tile-harucaratto.jpg";
@@ -17,6 +18,28 @@ import tilePyurePink from "../assets/tile-pyure-pink.jpg";
 import tilePyureWhite from "../assets/tile-pyure-white.jpg";
 import tileToruteBlack from "../assets/tile-torute-black.jpg";
 import tileToruteWhite from "../assets/tile-torute-white.jpg";
+
+// ARAS
+import arasIcon from "../assets/aras-icon.png";
+import arasThumb from "../assets/aras-thumb.jpg";
+
+import arasFork from "../assets/aras-fork.jpg";
+import arasKnife from "../assets/aras-knife.jpg";
+import arasScoopPlate from "../assets/aras-scoop-plate.jpg";
+import arasSpoon from "../assets/aras-spoon.jpg";
+import arasWavePlate from "../assets/aras-wave-plate.jpg";
+
+// MOKU
+import mokuIcon from "../assets/moku-icon.png";
+import mokuThumb from "../assets/moku-thumb.jpg";
+
+import mokuMountain from "../assets/moku-mountain.jpg";
+import mokuPeak from "../assets/moku-peak.jpg";
+import mokuSereneF from "../assets/moku-serene-f.jpg";
+import mokuSerenePLed from "../assets/moku-serene-p-led.jpg";
+import mokuSherwood from "../assets/moku-sherwood.jpg";
+import mokuSideF from "../assets/moku-side-f.jpg";
+import mokuSideP from "../assets/moku-side-p.jpg";
 
 // タイル画像データ
 const tileItems = [
@@ -31,6 +54,26 @@ const tileItems = [
   { src: tilePyureWhite, name: "pyure" },
   { src: tileToruteBlack, name: "torute" },
   { src: tileToruteWhite, name: "torute" },
+];
+
+// ARAS画像データ
+const arasItems = [
+  { src: arasFork, name: "FORK" },
+  { src: arasKnife, name: "KNIFE" },
+  { src: arasScoopPlate, name: "SCOOP PLATE" },
+  { src: arasSpoon, name: "SPOON" },
+  { src: arasWavePlate, name: "WAVE PLATE" },
+]
+
+// MOKU画像データ
+const mokuItems = [
+  { src: mokuMountain, name: "Mountain" },
+  { src: mokuPeak, name: "PEAK" },
+  { src: mokuSereneF, name: "SERENE F" },
+  { src: mokuSerenePLed, name: "SERENE P LED" },
+  { src: mokuSherwood, name: "SHERWOOD" },
+  { src: mokuSideF, name: "SIDE F" },
+  { src: mokuSideP, name: "SIDE P" },
 ];
 ---
 
@@ -52,7 +95,7 @@ const tileItems = [
   <div class="TILE active">
     <ItemList
       tabBlockName="TILE"
-      mainItemView={mainTileView}
+      itemThumb={tileThumb}
       itemIcon={tileIcon}
       items={tileItems}
     />
@@ -60,17 +103,17 @@ const tileItems = [
   <div class="ARAS">
     <ItemList
       tabBlockName="ARAS"
-      mainItemView={mainTileView}
-      itemIcon={tileIcon}
-      items={tileItems}
+      itemThumb={arasThumb}
+      itemIcon={arasIcon}
+      items={arasItems}
     />
   </div>
   <div class="MOKU">
     <ItemList
       tabBlockName="MOKU"
-      mainItemView={mainTileView}
-      itemIcon={tileIcon}
-      items={tileItems}
+      itemThumb={mokuThumb}
+      itemIcon={mokuIcon}
+      items={mokuItems}
     />
   </div>
 </div>
