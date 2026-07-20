@@ -2,7 +2,7 @@
 import ItemImg from "./itemImg.astro";
 import { Image } from "astro:assets";
 import ItemThumb from "../assets/item_thumb.png";
-const { tabBlockName, mainItemView, itemIcon, items } = Astro.props;
+const { tabBlockName, itemThumb, itemIcon, items } = Astro.props;
 
 const initialItems = items.slice(0, 5);
 const moreItems = items.slice(5);
@@ -16,7 +16,9 @@ const totalCount = items.length;
       picture{
         &:first-child{
           img{
-            width: 100%;
+            // width: 100%;
+            width: auto;
+            height: 387px;
           }
         }
         &:last-child{
@@ -25,7 +27,7 @@ const totalCount = items.length;
             top: 290px;
             left: 30px;
             width: 156px;
-            height: 156px;
+            height: auto;
           }
         }
       }
@@ -71,7 +73,7 @@ const totalCount = items.length;
 
 <div class="item-list">
   <div class="main-thumb">
-    <picture><Image src={ItemThumb} alt="" /></picture>
+    <picture><Image src={itemThumb} alt="" /></picture>
     <picture><Image src={itemIcon} alt="" /></picture>
   </div>
   <h2>{tabBlockName}</h2>
